@@ -1,0 +1,924 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="icon" type="image/gif" href="/storecheatios.gif?v=3" />
+  <link rel="icon" type="image/png" href="/avatar.png?v=3" />
+  <link rel="apple-touch-icon" href="/avatar.png?v=3" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --font-main: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+      --font-mono: 'JetBrains Mono', monospace;
+      --bg: #f8fafc;
+      --card-bg: rgba(255, 255, 255, 0.95);
+      --card-border: #e2e8f0;
+      --text: #0f172a;
+      --text-muted: #64748b;
+      --primary: #4f46e5;
+      --primary-hover: #4338ca;
+      --cyan: #0284c7;
+      --green: #059669;
+      --green-bg: rgba(5, 150, 105, 0.1);
+      --red: #e11d48;
+      --red-bg: rgba(225, 29, 72, 0.1);
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: var(--font-main);
+    }
+
+    body {
+      background-color: var(--bg);
+      background-image: 
+        radial-gradient(circle at 15% 15%, rgba(99, 102, 241, 0.08) 0%, transparent 40%),
+        radial-gradient(circle at 85% 20%, rgba(6, 182, 212, 0.08) 0%, transparent 40%),
+        radial-gradient(circle at 50% 80%, rgba(16, 185, 129, 0.06) 0%, transparent 45%),
+        radial-gradient(rgba(148, 163, 184, 0.18) 1px, transparent 1px);
+      background-size: 100% 100%, 100% 100%, 100% 100%, 26px 26px;
+      background-attachment: fixed;
+      color: var(--text);
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 24px 16px 40px;
+      position: relative;
+      overflow-x: hidden;
+    }
+
+    .container {
+      width: 100%;
+      max-width: 760px;
+      z-index: 2;
+    }
+
+    .card {
+      background: var(--card-bg);
+      backdrop-filter: blur(28px) saturate(190%);
+      -webkit-backdrop-filter: blur(28px) saturate(190%);
+      border: 1px solid var(--card-border);
+      border-radius: 26px;
+      padding: 24px;
+      margin-bottom: 20px;
+      box-shadow: 
+        0 20px 40px -15px rgba(15, 23, 42, 0.07),
+        0 0 1px rgba(0, 0, 0, 0.08);
+    }
+
+    .form-group {
+      margin-bottom: 16px;
+    }
+
+    label {
+      display: block;
+      font-size: 11px;
+      font-weight: 700;
+      color: #475569;
+      margin-bottom: 7px;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+    }
+
+    input, select {
+      width: 100%;
+      background: #ffffff;
+      border: 1px solid #cbd5e1;
+      border-radius: 12px;
+      padding: 13px 16px;
+      color: #0f172a;
+      font-size: 13px;
+      outline: none;
+      transition: border-color 0.2s, box-shadow 0.2s;
+    }
+
+    input:focus, select:focus {
+      border-color: var(--primary);
+      box-shadow: 0 0 0 3px rgba(79, 70, 229, 0.15);
+    }
+
+    .btn {
+      width: 100%;
+      background: linear-gradient(135deg, #4f46e5 0%, #6366f1 100%);
+      color: white;
+      border: none;
+      border-radius: 12px;
+      padding: 14px 20px;
+      font-size: 14px;
+      font-weight: 800;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      transition: transform 0.15s, box-shadow 0.2s;
+      box-shadow: 0 4px 14px rgba(79, 70, 229, 0.3);
+    }
+
+    .btn:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 6px 20px rgba(79, 70, 229, 0.45);
+    }
+
+    .btn-green {
+      background: linear-gradient(135deg, #059669 0%, #10b981 100%);
+      box-shadow: 0 4px 14px rgba(16, 185, 129, 0.3);
+    }
+
+    .btn-green:hover {
+      box-shadow: 0 6px 20px rgba(16, 185, 129, 0.45);
+    }
+
+    /* MÀN HÌNH LOGIN */
+    #loginView {
+      max-width: 440px;
+      margin: 60px auto 0;
+      text-align: center;
+    }
+
+    .login-icon {
+      width: 60px;
+      height: 60px;
+      background: #eef2ff;
+      border: 1px solid #e0e7ff;
+      border-radius: 20px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 28px;
+      margin-bottom: 16px;
+      box-shadow: 0 4px 12px rgba(79, 70, 229, 0.15);
+    }
+
+    .login-title {
+      color: #0f172a;
+      font-size: 22px;
+      font-weight: 800;
+      margin-bottom: 6px;
+    }
+
+    .login-sub {
+      font-size: 13px;
+      color: var(--text-muted);
+      margin-bottom: 22px;
+    }
+
+    #loginError {
+      display: none;
+      padding: 12px;
+      border-radius: 12px;
+      background: var(--red-bg);
+      border: 1px solid rgba(225, 29, 72, 0.25);
+      color: #be123c;
+      font-size: 13px;
+      margin-bottom: 16px;
+      text-align: left;
+    }
+
+    /* MÀN HÌNH DASHBOARD SAU KHI LOGIN */
+    #dashboardView {
+      display: none;
+    }
+
+    .dash-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 20px;
+      padding-bottom: 16px;
+      border-bottom: 1px solid var(--card-border);
+    }
+
+    .dash-brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .dash-brand img {
+      width: 40px;
+      height: 40px;
+      border-radius: 12px;
+      object-fit: cover;
+      border: 1.5px solid #e2e8f0;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+    }
+
+    .dash-brand h2 {
+      color: #0f172a;
+      font-size: 17px;
+      font-weight: 800;
+      letter-spacing: -0.02em;
+    }
+
+    .dash-actions {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .btn-sm {
+      padding: 8px 14px;
+      border-radius: 10px;
+      font-size: 12px;
+      font-weight: 600;
+      text-decoration: none;
+      cursor: pointer;
+      border: 1px solid #cbd5e1;
+      background: #f8fafc;
+      color: #334155;
+      transition: all 0.2s;
+    }
+
+    .btn-sm:hover {
+      background: #e2e8f0;
+      color: #0f172a;
+    }
+
+    .btn-sm.logout {
+      border-color: #fecdd3;
+      color: #be123c;
+      background: #fff1f2;
+    }
+
+    .btn-sm.logout:hover {
+      background: #ffe4e6;
+    }
+
+    /* 2 TAB CHÍNH */
+    .main-tabs {
+      display: flex;
+      gap: 8px;
+      background: #f1f5f9;
+      padding: 5px;
+      border-radius: 14px;
+      margin-bottom: 20px;
+      border: 1px solid #e2e8f0;
+    }
+
+    .main-tab {
+      flex: 1;
+      padding: 12px 14px;
+      border: none;
+      border-radius: 10px;
+      background: transparent;
+      color: var(--text-muted);
+      font-size: 13px;
+      font-weight: 700;
+      cursor: pointer;
+      transition: all 0.2s;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+    }
+
+    .main-tab.active {
+      background: #ffffff;
+      color: var(--primary);
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+    }
+
+    /* STATS GRID */
+    .stats-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 12px;
+      margin-bottom: 18px;
+    }
+
+    .stat-box {
+      background: #f8fafc;
+      border: 1px solid #e2e8f0;
+      border-radius: 16px;
+      padding: 14px 12px;
+      text-align: center;
+      transition: transform 0.2s;
+    }
+
+    .stat-box:hover {
+      transform: translateY(-2px);
+    }
+
+    .stat-val {
+      font-size: 24px;
+      font-weight: 800;
+      margin-bottom: 4px;
+      font-family: var(--font-mono);
+    }
+
+    .stat-lbl {
+      font-size: 11px;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      font-weight: 700;
+      letter-spacing: 0.04em;
+    }
+
+    /* FILTER BUTTONS */
+    .filter-row {
+      display: flex;
+      gap: 8px;
+      margin-bottom: 16px;
+      background: #f1f5f9;
+      padding: 5px;
+      border-radius: 12px;
+      border: 1px solid #e2e8f0;
+    }
+
+    .filter-btn {
+      flex: 1;
+      padding: 9px;
+      border: none;
+      background: transparent;
+      color: var(--text-muted);
+      font-size: 12px;
+      font-weight: 700;
+      border-radius: 9px;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+
+    .filter-btn.active {
+      background: #ffffff;
+      color: var(--primary);
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+    }
+
+    /* KEY CARDS */
+    .key-list-container {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      max-height: 520px;
+      overflow-y: auto;
+      padding-right: 4px;
+    }
+
+    .key-card {
+      background: #ffffff;
+      border: 1px solid #e2e8f0;
+      border-radius: 16px;
+      padding: 14px 16px;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      transition: all 0.2s;
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.03);
+    }
+
+    .key-card:hover {
+      border-color: #cbd5e1;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
+      transform: translateY(-1px);
+    }
+
+    .key-row-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .key-text {
+      font-family: var(--font-mono) !important;
+      font-size: 15px;
+      font-weight: 700;
+      color: #4f46e5;
+      letter-spacing: 0.04em;
+    }
+
+    .badge {
+      font-size: 10px;
+      font-weight: 800;
+      padding: 4px 9px;
+      border-radius: 7px;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+    }
+
+    .badge-unused {
+      background: #ecfdf5;
+      color: #047857;
+      border: 1px solid #a7f3d0;
+    }
+
+    .badge-used {
+      background: #fff1f2;
+      color: #be123c;
+      border: 1px solid #fecdd3;
+    }
+
+    .key-info {
+      font-size: 12px;
+      color: var(--text-muted);
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+      padding-top: 8px;
+      border-top: 1px dashed #e2e8f0;
+    }
+
+    .key-info span strong {
+      color: #334155;
+    }
+
+    .key-info code {
+      font-family: var(--font-mono);
+      color: #0284c7;
+      background: #f1f5f9;
+      padding: 2px 6px;
+      border-radius: 6px;
+    }
+
+    .btn-copy {
+      align-self: flex-end;
+      background: #f8fafc;
+      border: 1px solid #cbd5e1;
+      color: #334155;
+      font-size: 11px;
+      font-weight: 600;
+      padding: 6px 12px;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+
+    .btn-copy:hover {
+      background: #eef2ff;
+      border-color: #c7d2fe;
+      color: #4f46e5;
+    }
+
+    .recent-box {
+      margin-top: 18px;
+      padding: 16px;
+      background: #ecfdf5;
+      border-radius: 16px;
+      border: 1px solid #a7f3d0;
+    }
+
+    .recent-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 12px;
+    }
+
+    .recent-title {
+      color: #047857;
+      font-size: 13px;
+      font-weight: 700;
+    }
+
+    .empty-box {
+      text-align: center;
+      color: var(--text-muted);
+      padding: 36px 16px;
+      font-size: 13px;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <!-- ================= 1. MÀN HÌNH ĐĂNG NHẬP ADMIN ================= -->
+    <div id="loginView">
+      <div class="card">
+        <div class="login-icon">🔐</div>
+        <h1 class="login-title">storecheatios — Quản Trị Hệ Thống</h1>
+        <p class="login-sub">Nhập mật khẩu Admin để truy cập bảng điều khiển sinh mã & quản lý key</p>
+
+        <div id="loginError"></div>
+
+        <form onsubmit="handleLogin(event)">
+          <div class="form-group" style="text-align: left;">
+            <label for="inputPassword">MẬT KHẨU ADMIN</label>
+            <div style="position: relative;">
+              <input 
+                type="password" 
+                id="inputPassword" 
+                placeholder="••••••••••••••••" 
+                required 
+                autocomplete="current-password"
+                style="width: 100%; box-sizing: border-box; padding-right: 44px;"
+              />
+              <button type="button" onclick="togglePasswordVisibility()" title="Hiện/ẩn mật khẩu" style="position: absolute; right: 10px; top: 50%; transform: translateY(-50%); background: transparent; border: none; cursor: pointer; font-size: 16px; color: #64748b; padding: 4px; line-height: 1;">
+                <span id="eyeIcon">👁️</span>
+              </button>
+            </div>
+          </div>
+
+          <button type="submit" id="btnLogin" class="btn">
+            <span>🚀 Đăng Nhập Hệ Thống</span>
+          </button>
+        </form>
+
+        <div style="margin-top: 20px; display: flex; justify-content: center; gap: 14px; font-size: 13px;">
+          <a href="/" style="color: #4f46e5; text-decoration: none; font-weight: 600;">🏠 Quay về Trang Chủ</a>
+          <span style="color: #cbd5e1;">•</span>
+          <a href="https://t.me/lethanhduyy" target="_blank" style="color: #4f46e5; text-decoration: none; font-weight: 600;">💬 Telegram: @lethanhduyy</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- ================= 2. DASHBOARD SAU KHI ĐĂNG NHẬP THÀNH CÔNG ================= -->
+    <div id="dashboardView">
+      <div class="dash-header">
+        <div class="dash-brand">
+          <img src="/storecheatios.gif" alt="storecheatios" style="width: 40px; height: 40px; border-radius: 12px; object-fit: cover; border: 1.5px solid #e2e8f0; box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08); display: block;">
+          <h2>storecheatios — Quản Trị Hệ Thống</h2>
+        </div>
+        <div class="dash-actions">
+          <a href="/" class="btn-sm" target="_blank">🏠 Trang Chủ</a>
+          <a href="https://t.me/lethanhduyy" target="_blank" class="btn-sm">💬 @ngthanhnew</a>
+          <button type="button" class="btn-sm logout" onclick="handleLogout()">🚪 Đăng Xuất</button>
+        </div>
+      </div>
+
+      <!-- THANH CHUYỂN 2 PHẦN CHÍNH -->
+      <div class="main-tabs">
+        <button type="button" id="tabNavCreate" class="main-tab active" onclick="switchSection('create')">
+          <span>⚡</span>
+          <span>Phần 1: Tạo Key Mới</span>
+        </button>
+        <button type="button" id="tabNavList" class="main-tab" onclick="switchSection('list')">
+          <span>📋</span>
+          <span>Phần 2: Danh Sách & Kiểm Tra Key</span>
+        </button>
+      </div>
+
+      <!-- ================= PHẦN 1: TẠO KEY ================= -->
+      <div id="sectionCreate" class="card">
+        <h3 style="color: #0f172a; font-size: 16px; margin-bottom: 16px; font-weight: 800;">⚡ Sinh Mã Kích Hoạt Mới</h3>
+
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-bottom: 16px;">
+          <div class="form-group" style="margin-bottom: 0;">
+            <label for="createCount">Số lượng mã muốn tạo</label>
+            <input type="number" id="createCount" min="1" max="50" value="1" />
+          </div>
+          <div class="form-group" style="margin-bottom: 0;">
+            <label for="createPrefix">Tiền tố (Tùy chọn)</label>
+            <input type="text" id="createPrefix" placeholder="VD: KEY-" />
+          </div>
+        </div>
+
+        <button type="button" id="btnGenerate" class="btn btn-green" onclick="handleGenerateCodes()">
+          <span>⚡ Bấm Để Tạo Mã Ngay</span>
+        </button>
+
+        <div id="recentCreatedSection" class="recent-box" style="display: none;">
+          <div class="recent-header">
+            <span class="recent-title">🎉 Các mã vừa tạo thành công:</span>
+            <button type="button" class="btn-sm" onclick="copyAllRecent()">📋 Copy Tất Cả</button>
+          </div>
+          <div id="recentCodesList" class="key-list-container" style="max-height: 200px;"></div>
+        </div>
+      </div>
+
+      <!-- ================= PHẦN 2: DANH SÁCH VÀ KIỂM TRA KEY ================= -->
+      <div id="sectionList" class="card" style="display: none;">
+        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 16px;">
+          <h3 style="color: #0f172a; font-size: 16px; font-weight: 800;">📋 Danh Sách & Kiểm Tra Trạng Thái Key</h3>
+          <button type="button" class="btn-sm" onclick="fetchCodesData()">🔄 Làm Mới</button>
+        </div>
+
+        <!-- Thống kê -->
+        <div class="stats-grid">
+          <div class="stat-box">
+            <div class="stat-val" id="statTotal" style="color: #4f46e5;">0</div>
+            <div class="stat-lbl">Tổng Key</div>
+          </div>
+          <div class="stat-box">
+            <div class="stat-val" id="statUnused" style="color: #059669;">0</div>
+            <div class="stat-lbl">Chưa Sài</div>
+          </div>
+          <div class="stat-box">
+            <div class="stat-val" id="statUsed" style="color: #e11d48;">0</div>
+            <div class="stat-lbl">Đã Sài</div>
+          </div>
+        </div>
+
+        <!-- Tìm kiếm -->
+        <div style="margin-bottom: 14px;">
+          <input 
+            type="text" 
+            id="searchBox" 
+            placeholder="🔎 Tìm kiếm theo Mã Key hoặc UDID máy..." 
+            oninput="renderFilteredList()" 
+          />
+        </div>
+
+        <!-- Lọc tab -->
+        <div class="filter-row">
+          <button type="button" class="filter-btn active" data-f="all" onclick="setSubFilter('all', this)">Tất cả</button>
+          <button type="button" class="filter-btn" data-f="unused" onclick="setSubFilter('unused', this)">🟢 Chưa sài</button>
+          <button type="button" class="filter-btn" data-f="used" onclick="setSubFilter('used', this)">🔴 Đã sài</button>
+        </div>
+
+        <!-- Danh sách -->
+        <div id="allKeysList" class="key-list-container">
+          <div class="empty-box">Đang tải danh sách mã...</div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <script>
+    let activeAdminKey = '';
+    let cachedCodes = [];
+    let currentSubFilter = 'all';
+    let recentlyGenerated = [];
+
+    function togglePasswordVisibility() {
+      const inp = document.getElementById('inputPassword');
+      const eye = document.getElementById('eyeIcon');
+      if (inp.type === 'password') {
+        inp.type = 'text';
+        eye.innerText = '🙈';
+      } else {
+        inp.type = 'password';
+        eye.innerText = '👁️';
+      }
+    }
+
+    document.addEventListener('DOMContentLoaded', () => {
+      const savedKey = localStorage.getItem('cfg_admin_key');
+      if (savedKey) {
+        document.getElementById('inputPassword').value = savedKey;
+        checkLoginWithKey(savedKey, true);
+      }
+    });
+
+    async function handleLogin(e) {
+      if (e) e.preventDefault();
+      const pass = document.getElementById('inputPassword').value.trim();
+      if (!pass) {
+        showLoginError('Vui lòng nhập mật khẩu admin!');
+        return;
+      }
+      await checkLoginWithKey(pass, false);
+    }
+
+    async function checkLoginWithKey(pass, isAuto = false) {
+      const btn = document.getElementById('btnLogin');
+      const errBox = document.getElementById('loginError');
+      errBox.style.display = 'none';
+      if (btn) btn.innerHTML = '<span>⏳ Đang kiểm tra...</span>';
+
+      try {
+        const res = await fetch('/api/admin/list-codes', {
+          headers: { 'X-Admin-Key': pass }
+        });
+
+        const data = await res.json();
+        if (!res.ok || !data.success) {
+          if (!isAuto) {
+            showLoginError(data.message || 'Mật khẩu admin không đúng!');
+          } else {
+            localStorage.removeItem('cfg_admin_key');
+          }
+          if (btn) btn.innerHTML = '<span>🚀 Đăng Nhập Hệ Thống</span>';
+          return;
+        }
+
+        activeAdminKey = pass;
+        localStorage.setItem('cfg_admin_key', pass);
+        cachedCodes = data.codes || [];
+
+        document.getElementById('loginView').style.display = 'none';
+        document.getElementById('dashboardView').style.display = 'block';
+
+        updateStatsUI();
+        renderFilteredList();
+      } catch (err) {
+        if (!isAuto) {
+          showLoginError('Lỗi kết nối tới server: ' + err.message);
+        }
+        if (btn) btn.innerHTML = '<span>🚀 Đăng Nhập Hệ Thống</span>';
+      }
+    }
+
+    function showLoginError(msg) {
+      const errBox = document.getElementById('loginError');
+      errBox.innerText = '❌ ' + msg;
+      errBox.style.display = 'block';
+    }
+
+    function handleLogout() {
+      if (confirm('Bạn có chắc muốn đăng xuất?')) {
+        activeAdminKey = '';
+        localStorage.removeItem('cfg_admin_key');
+        document.getElementById('inputPassword').value = '';
+        document.getElementById('dashboardView').style.display = 'none';
+        document.getElementById('loginView').style.display = 'block';
+      }
+    }
+
+    function switchSection(sec) {
+      const tabCreate = document.getElementById('tabNavCreate');
+      const tabList = document.getElementById('tabNavList');
+      const secCreate = document.getElementById('sectionCreate');
+      const secList = document.getElementById('sectionList');
+
+      if (sec === 'create') {
+        tabCreate.classList.add('active');
+        tabList.classList.remove('active');
+        secCreate.style.display = 'block';
+        secList.style.display = 'none';
+      } else {
+        tabList.classList.add('active');
+        tabCreate.classList.remove('active');
+        secList.style.display = 'block';
+        secCreate.style.display = 'none';
+        fetchCodesData();
+      }
+    }
+
+    async function handleGenerateCodes() {
+      const count = parseInt(document.getElementById('createCount').value, 10) || 1;
+      const prefix = document.getElementById('createPrefix').value.trim();
+      const btn = document.getElementById('btnGenerate');
+
+      btn.disabled = true;
+      btn.innerHTML = '<span>⏳ Đang sinh mã và lưu vào hệ thống...</span>';
+
+      try {
+        const res = await fetch('/api/admin/generate-codes', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+            'X-Admin-Key': activeAdminKey
+          },
+          body: JSON.stringify({ count, prefix, package: 3 })
+        });
+
+        const data = await res.json();
+        if (!res.ok || !data.success) {
+          alert('Lỗi tạo mã: ' + (data.message || 'Thất bại'));
+          return;
+        }
+
+        recentlyGenerated = data.codes || [];
+        cachedCodes = data.allCodes || [];
+
+        renderRecentCreated();
+        updateStatsUI();
+        alert(`✅ Đã tạo thành công ${recentlyGenerated.length} mã kích hoạt mới!`);
+      } catch (err) {
+        alert('Lỗi kết nối: ' + err.message);
+      } finally {
+        btn.disabled = false;
+        btn.innerHTML = '<span>⚡ Bấm Để Tạo Mã Ngay</span>';
+      }
+    }
+
+    function renderRecentCreated() {
+      const box = document.getElementById('recentCreatedSection');
+      const container = document.getElementById('recentCodesList');
+      if (recentlyGenerated.length === 0) {
+        box.style.display = 'none';
+        return;
+      }
+
+      box.style.display = 'block';
+      container.innerHTML = recentlyGenerated.map(code => `
+        <div class="key-card">
+          <div class="key-row-top">
+            <span class="key-text">${code}</span>
+            <button type="button" class="btn-copy" onclick="copyText('${code}')">📋 Copy</button>
+          </div>
+        </div>
+      `).join('');
+    }
+
+    function copyAllRecent() {
+      if (recentlyGenerated.length === 0) return;
+      const text = recentlyGenerated.join('\n');
+      copyText(text);
+    }
+
+    async function fetchCodesData() {
+      const container = document.getElementById('allKeysList');
+      container.innerHTML = '<div class="empty-box">⏳ Đang đồng bộ dữ liệu từ Cloudflare KV...</div>';
+
+      try {
+        const res = await fetch('/api/admin/list-codes', {
+          headers: { 'X-Admin-Key': activeAdminKey }
+        });
+        const data = await res.json();
+        if (data.success && data.codes) {
+          cachedCodes = data.codes;
+          updateStatsUI();
+          renderFilteredList();
+        }
+      } catch (e) {
+        container.innerHTML = '<div class="empty-box" style="color: var(--red);">Không thể làm mới: ' + e.message + '</div>';
+      }
+    }
+
+    function updateStatsUI() {
+      const total = cachedCodes.length;
+      const used = cachedCodes.filter(item => (typeof item === 'object' ? item.used : false)).length;
+      const unused = total - used;
+
+      document.getElementById('statTotal').innerText = total;
+      document.getElementById('statUnused').innerText = unused;
+      document.getElementById('statUsed').innerText = used;
+    }
+
+    function setSubFilter(filter, btn) {
+      currentSubFilter = filter;
+      document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      renderFilteredList();
+    }
+
+    function renderFilteredList() {
+      const query = (document.getElementById('searchBox').value || '').trim().toUpperCase();
+      const container = document.getElementById('allKeysList');
+
+      let list = cachedCodes.filter(item => {
+        const isObj = typeof item === 'object';
+        const code = isObj ? (item.code || '') : item;
+        const used = isObj ? !!item.used : false;
+        const udid = isObj && item.udid ? item.udid.toUpperCase() : '';
+
+        if (currentSubFilter === 'unused' && used) return false;
+        if (currentSubFilter === 'used' && !used) return false;
+
+        if (query) {
+          return code.toUpperCase().includes(query) || udid.includes(query);
+        }
+        return true;
+      });
+
+      list.sort((a, b) => {
+        const aUsed = typeof a === 'object' ? !!a.used : false;
+        const bUsed = typeof b === 'object' ? !!b.used : false;
+        if (aUsed !== bUsed) return aUsed ? 1 : -1;
+        return 0;
+      });
+
+      if (list.length === 0) {
+        container.innerHTML = '<div class="empty-box">Không có mã nào phù hợp.</div>';
+        return;
+      }
+
+      container.innerHTML = list.map(item => {
+        const isObj = typeof item === 'object';
+        const code = isObj ? item.code : item;
+        const used = isObj ? !!item.used : false;
+        const udid = isObj && item.udid ? item.udid : '';
+        const model = isObj && item.model ? item.model : '';
+        const usedAt = isObj && item.usedAt ? new Date(item.usedAt).toLocaleString('vi-VN') : '';
+        const createdAt = isObj && item.createdAt ? new Date(item.createdAt).toLocaleString('vi-VN') : '';
+
+        return `
+          <div class="key-card">
+            <div class="key-row-top">
+              <span class="key-text">${code}</span>
+              <span class="badge ${used ? 'badge-used' : 'badge-unused'}">
+                ${used ? 'ĐÃ SỬ DỤNG' : 'CHƯA SÀI'}
+              </span>
+            </div>
+
+            <div class="key-info">
+              ${used ? `
+                <span>📱 <strong>Máy:</strong> ${model || 'iPhone'} | <code>${udid}</code></span>
+                <span>⏰ <strong>Kích hoạt:</strong> ${usedAt}</span>
+              ` : `
+                <span>✅ Sẵn sàng cấp cho khách</span>
+                ${createdAt ? `<span>📅 Tạo lúc: ${createdAt}</span>` : ''}
+              `}
+            </div>
+
+            <button type="button" class="btn-copy" onclick="copyText('${code}')">📋 Copy Mã</button>
+          </div>
+        `;
+      }).join('');
+    }
+
+    async function copyText(text) {
+      try {
+        await navigator.clipboard.writeText(text);
+        alert('Đã copy: ' + text);
+      } catch {
+        const t = document.createElement('textarea');
+        t.value = text;
+        document.body.appendChild(t);
+        t.select();
+        document.execCommand('copy');
+        document.body.removeChild(t);
+        alert('Đã copy: ' + text);
+      }
+    }
+  </script>
+</body>
+</html>

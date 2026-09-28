@@ -1,0 +1,562 @@
+{
+  "openapi": "3.1.0",
+  "info": {
+    "title": "muacert.com Developer API",
+    "version": "1.1.0",
+    "description": "## Introduction\n\nSince many people wanted to connect to our service, I decided to create this API to allow resellers to directly purchase packages, download provisioning profiles, and check device statuses straight from their own services.\n\n### Authentication\nAll requests to the OpenAPI must be authenticated using your secret API token. **Ensure you keep this token private as this token acts as a access key to your account**.\n\nInclude the token in the `Authorization` header of your HTTP requests:\n```http\nAuthorization: Bearer sk_your_api_token_here\n```\n\n### Usage & Rate Limiting\nTo ensure quality of service for all our users, API requests are subject to rate limiting. If you exceed the allowed limits, the API will respond with a `429 Too Many Requests` status code.\n\n### Managing Devices & Balance\nWhen you add a new device via `POST /v1/devices`, the required balance is automatically deducted from your account. If your account has insufficient balance (`ApiCode: 2001`), the device registration request will be rejected.\n\n---\n*For help or support, please contact Nyasami on Discord (@nyasami).*"
+  },
+  "servers": [
+    {
+      "url": "https://muacert.com/openapi",
+      "description": "Production Server"
+    }
+  ],
+  "components": {
+    "securitySchemes": {
+      "BearerAuth": {
+        "type": "http",
+        "scheme": "bearer",
+        "bearerFormat": "API Key",
+        "description": "Provide your secret API token (sk_...) prefixed with Bearer"
+      }
+    },
+    "schemas": {
+      "ApiCode": {
+        "type": "integer",
+        "description": "API Error Codes:\n* `0` - SUCCESS\n* `1001` - MISSING_PARAMS\n* `1004` - NOT_FOUND\n* `1005` - INVALID_TIER\n* `1006` - INVALID_CREDENTIALS\n* `1007` - BANNED\n* `1008` - USER_NOT_FOUND\n* `2001` - INSUFFICIENT_BALANCE\n* `2002` - DUPLICATE_UDID\n* `2003` - DEVICE_ADD_FAILED\n* `2004` - INVALID_PRICING_CONFIG\n* `2005` - DEVICE_NOT_FOUND\n* `4001` - EXTERNAL_API_ERROR\n* `5000` - SERVER_ERROR",
+        "enum": [
+          0,
+          1001,
+          1004,
+          1005,
+          1006,
+          1007,
+          1008,
+          2001,
+          2002,
+          2003,
+          2004,
+          2005,
+          4001,
+          5000
+        ]
+      },
+      "ApiResponse": {
+        "type": "object",
+        "properties": {
+          "code": {
+            "$ref": "#/components/schemas/ApiCode"
+          },
+          "message": {
+            "type": "string"
+          },
+          "data": {
+            "type": "object"
+          }
+        }
+      },
+      "Device": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "attributes": {
+            "type": "object",
+            "properties": {
+              "udid": {
+                "type": "string"
+              },
+              "name": {
+                "type": "string"
+              },
+              "model": {
+                "type": "string"
+              },
+              "addedAt": {
+                "type": "string",
+                "format": "date-time"
+              }
+            }
+          },
+          "package": {
+            "type": "integer",
+            "enum": [
+              1,
+              2,
+              3
+            ],
+            "description": "Package ID:\n* `1` - 150,000 VND / $10 USD\n* `2` - 100,000 VND / $6 USD\n* `3` - 50,000 VND / $4 USD"
+          },
+          "deleted": {
+            "type": "boolean"
+          }
+        }
+      }
+    }
+  },
+  "security": [
+    {
+      "BearerAuth": []
+    }
+  ],
+  "paths": {
+    "/v1/certificate/{udid}": {
+      "get": {
+        "summary": "Check Certificate Status (Global)",
+        "description": "Globally searches for a certificate by UDID and returns its public status and download link. Requires API authentication.",
+        "operationId": "getCertificateStatus",
+        "parameters": [
+          {
+            "name": "udid",
+            "in": "path",
+            "required": true,
+            "description": "Device UDID",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful operation",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "code": {
+                      "type": "integer",
+                      "example": 0
+                    },
+                    "data": {
+                      "type": "object",
+                      "properties": {
+                        "package": {
+                          "type": "integer",
+                          "example": 3
+                        },
+                        "status": {
+                          "type": "string",
+                          "example": "Active"
+                        },
+                        "addedAt": {
+                          "type": "string",
+                          "format": "date-time"
+                        },
+                        "model": {
+                          "type": "string",
+                          "example": "iPhone 15 Pro"
+                        },
+                        "downloadUrl": {
+                          "type": "string",
+                          "nullable": true,
+                          "example": "https://muacert.com/api/downloadCert/..."
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Missing UDID parameter"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "404": {
+            "description": "Device not found in the global database"
+          }
+        }
+      }
+    },
+    "/v1/devices": {
+      "get": {
+        "summary": "List Devices",
+        "description": "Returns all devices associated with the authenticated account.",
+        "operationId": "listDevices",
+        "responses": {
+          "200": {
+            "description": "Successful operation",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "code": {
+                      "type": "integer",
+                      "example": 0
+                    },
+                    "data": {
+                      "type": "object",
+                      "properties": {
+                        "devicesList": {
+                          "type": "array",
+                          "items": {
+                            "$ref": "#/components/schemas/Device"
+                          }
+                        }
+                      }
+                    },
+                    "message": {
+                      "type": "string"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized - invalid or missing API token"
+          }
+        }
+      },
+      "post": {
+        "summary": "Add Device",
+        "description": "Registers a new device using provided info. Deducts balance automatically from the account.",
+        "operationId": "addDevice",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "udid": {
+                    "type": "string",
+                    "description": "Device UDID"
+                  },
+                  "name": {
+                    "type": "string",
+                    "description": "Device name"
+                  },
+                  "model": {
+                    "type": "string",
+                    "description": "Device model (e.g. iPhone 15)"
+                  },
+                  "package": {
+                    "type": "integer",
+                    "description": "The target Package ID:\n* `1` - 150,000 VND / $10 USD\n* `2` - 100,000 VND / $6 USD\n* `3` - 50,000 VND / $4 USD"
+                  },
+                  "nickname": {
+                    "type": "string",
+                    "description": "Optional friendly nickname for the device"
+                  },
+                  "currency": {
+                    "type": "string",
+                    "enum": [
+                      "VND",
+                      "USD"
+                    ],
+                    "description": "Currency to deduct balance from, defaults to VND if not provided."
+                  }
+                },
+                "required": [
+                  "udid",
+                  "name",
+                  "package"
+                ]
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Device added successfully",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "code": {
+                      "type": "integer",
+                      "example": 0
+                    },
+                    "data": {
+                      "type": "object",
+                      "properties": {
+                        "device": {
+                          "$ref": "#/components/schemas/Device"
+                        }
+                      }
+                    },
+                    "message": {
+                      "type": "string"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request (e.g. invalid parameters, insufficient balance, duplicate UDID)",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiResponse"
+                },
+                "examples": {
+                  "insufficientBalance": {
+                    "summary": "Insufficient Balance",
+                    "value": {
+                      "code": 2001,
+                      "message": "Insufficient balance"
+                    }
+                  },
+                  "duplicateUdid": {
+                    "summary": "Duplicate UDID",
+                    "value": {
+                      "code": 2002,
+                      "message": "Đã tồn tại thiết bị với UDID này"
+                    }
+                  },
+                  "invalidPackage": {
+                    "summary": "Invalid Package",
+                    "value": {
+                      "code": 1005,
+                      "message": "Invalid package. Must be 1, 2, or 3."
+                    }
+                  },
+                  "missingParams": {
+                    "summary": "Missing Parameters",
+                    "value": {
+                      "code": 1001,
+                      "message": "Missing required fields"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "500": {
+            "description": "Internal Server Error / External API Failure",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiResponse"
+                },
+                "example": {
+                  "code": 2003,
+                  "message": "Không thể thêm thiết bị, vui lòng kiểm tra lại thông tin hoặc thử lại sau..."
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/devices/{id}/status": {
+      "get": {
+        "summary": "Check Device Status",
+        "description": "Force checks the current unban status of a specific device from the external API.",
+        "operationId": "getDeviceStatus",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "description": "Device ID",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Returns device unban status",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "code": {
+                      "type": "integer",
+                      "example": 0
+                    },
+                    "data": {
+                      "type": "object",
+                      "properties": {
+                        "id": {
+                          "type": "string"
+                        },
+                        "udid": {
+                          "type": "string"
+                        },
+                        "status": {
+                          "type": "string"
+                        },
+                        "revoked": {
+                          "type": "boolean"
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "404": {
+            "description": "Device not found"
+          }
+        }
+      }
+    },
+    "/v1/devices/{id}/provision": {
+      "get": {
+        "summary": "Get Provisioning Profile & Certificates",
+        "description": "Retrieves the mobileprovision and p12 certificates for a device. Returns a download URL for the zip file.",
+        "operationId": "getProvision",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "description": "Device ID",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Returns the certificate zip file immediately",
+            "content": {
+              "application/zip": {
+                "schema": {
+                  "type": "string",
+                  "format": "binary"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Device is not an Unban Tier"
+          },
+          "404": {
+            "description": "Device not found"
+          },
+          "500": {
+            "description": "Failed to retrieve certificate from external API"
+          }
+        }
+      }
+    },
+    "/v1/devices/{id}": {
+      "get": {
+        "summary": "Get Single Device",
+        "description": "Retrieves the information of a specific device.",
+        "operationId": "getSingleDevice",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "description": "Device ID",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful operation",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "code": {
+                      "type": "integer",
+                      "example": 0
+                    },
+                    "data": {
+                      "type": "object",
+                      "properties": {
+                        "device": {
+                          "$ref": "#/components/schemas/Device"
+                        }
+                      }
+                    },
+                    "message": {
+                      "type": "string"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "404": {
+            "description": "Device not found"
+          }
+        }
+      },
+      "delete": {
+        "summary": "Delete Device",
+        "description": "Soft deletes a device from the account.",
+        "operationId": "deleteDevice",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "description": "Device ID",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Deleted successfully"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "404": {
+            "description": "Device not found"
+          }
+        }
+      }
+    },
+    "/v1/devices/{id}/restore": {
+      "post": {
+        "summary": "Restore Device",
+        "description": "Restores a previously soft-deleted device.",
+        "operationId": "restoreDevice",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "description": "Device ID",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Device restored successfully"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "404": {
+            "description": "Device not found"
+          }
+        }
+      }
+    }
+  }
+}

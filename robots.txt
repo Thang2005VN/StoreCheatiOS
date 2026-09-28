@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://duyle.pages.dev/sitemap.xml

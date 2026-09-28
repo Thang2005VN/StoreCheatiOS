@@ -1,0 +1,63 @@
+AUTO BANK SEPAY - DUYLE
+=======================
+
+Thong tin nhan tien da gan san trong code:
+- Ngan hang: VietinBank
+- So tai khoan: 105873594999
+- Chu tai khoan: LE THANH DUY
+- So tien goi: 50.000 VND
+- Noi dung moi don: SEVQR DLXXXXXXXX
+
+Webhook tren web:
+- URL: https://TEN-MIEN-CUA-BAN/api/sepay/webhook
+
+1. SEP AY - KET NOI TAI KHOAN NGAN HANG
+- Dang nhap SePay va ket noi tai khoan VietinBank 105873594999.
+- Gia tri "lethanhduy_sepay" khong duoc ghi cung vao source code vi webhook can Secret/API Key rieng.
+
+2. SEP AY - CAU HINH MA THANH TOAN
+Vao cau hinh ma thanh toan va tao mau:
+- Tien to: DL
+- Hau to toi thieu: 8
+- Hau to toi da: 8
+- Loai ky tu: So va chu (A-Z, 0-9)
+
+3. SEP AY - TAO WEBHOOK
+- Event: Tien vao / Money in
+- Tai khoan: VietinBank 105873594999
+- URL: https://TEN-MIEN-CUA-BAN/api/sepay/webhook
+- Content type: JSON
+- Nen loc ma thanh toan theo tien to DL
+- Nen bat bo qua giao dich khong co ma thanh toan
+- Bao mat: HMAC-SHA256 (khuyen nghi)
+- Tao mot Secret Key manh va COPY NGAY khi tao.
+
+4. CLOUDFLARE - BIEN MOI TRUONG
+Them Secret:
+- SEPAY_WEBHOOK_SECRET = Secret Key HMAC o buoc 3
+
+Web van can cac cau hinh cu:
+- MUACERT_API_TOKEN = token API MuaCert (tuy chon; ban nay da co token fallback trong Worker)
+- CODES_KV = KV binding dang dung cho key; Auto Bank cung dung KV nay de luu don/giao dich.
+
+Neu muon dung API Key thay HMAC, code cung ho tro:
+- SEPAY_WEBHOOK_API_KEY = API Key cau hinh tren SePay
+Khi da co SEPAY_WEBHOOK_SECRET thi code se uu tien HMAC.
+
+5. SEP AY - TEST
+- Dung nut Gui thu/Test cua webhook de kiem tra URL.
+- Sau do test giao dich that tu app ngan hang.
+- Khach phai chuyen DUNG 50.000 VND va GIU NGUYEN noi dung tu QR.
+
+LUONG HOAT DONG
+1) Khach nhap UDID.
+2) Bam "THANH TOAN AUTO BANK - 50.000D".
+3) Web tao QR VietQR co so tien va noi dung rieng.
+4) SePay gui giao dich vao /api/sepay/webhook.
+5) Worker kiem tra chu ky, STK, so tien, ma don va ID giao dich.
+6) Worker goi MuaCert Package 3.
+7) Web tu dong bao thanh cong va tiep tuc nap cert/ky app.
+
+LUU Y
+- MuaCert van phai co du so du. Neu het so du, don se hien "da nhan tien nhung kich hoat that bai".
+- Khong ghi Secret Key SePay vao source hoac wrangler.toml. Hay luu bang Cloudflare Secret.

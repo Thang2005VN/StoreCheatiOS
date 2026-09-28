@@ -1,0 +1,1551 @@
+<!doctype html>
+<html lang="vi">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/gif" href="/vanthang.gif?v=3" />
+    <link rel="icon" type="image/png" href="/avatar.png?v=3" />
+    <link rel="apple-touch-icon" href="/avatar.png?v=3" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="/editable-config.js"></script>
+    <title>Store Cheat iOS — Hệ Thống Kích Hoạt Chứng Chỉ iOS & Cài Đặt ESIGN</title>
+    <link rel="canonical" href="https://storecheatios.pages.dev/" />
+    
+    <!-- SEO Meta Tags -->
+    <meta name="description" content="Hệ thống kích hoạt chứng chỉ iOS tự động bởi duyle. Hỗ trợ ESign, KSign, Auto Bank và tải chứng chỉ nhanh chóng." />
+    <meta name="keywords" content="kích hoạt chứng chỉ ios, esign, ksign, auto bank, ngthanhnew, mua cert ios, @ngthanhnew" />
+    <meta name="author" content="ngthanhnew" />
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://duyle.pages.dev/" />
+    <meta property="og:title" content="duyle — Kích Hoạt Chứng Chỉ iOS & Cài Đặt ESIGN Tự Động" />
+    <meta property="og:description" content="Hệ thống kích hoạt chứng chỉ iOS tự động bởi vanthang. Hỗ trợ ESign, KSign và cài đặt trực tiếp trên iPhone / iPad." />
+    <meta property="og:image" content="https://vanthang.pages.dev/avatar.png" />
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image" />
+    <meta property="twitter:url" content="https://vanthang.pages.dev/" />
+    <meta property="twitter:title" content="duyle — Kích Hoạt Chứng Chỉ iOS & Cài Đặt ESIGN Tự Động" />
+    <meta property="twitter:description" content="Hệ thống kích hoạt chứng chỉ iOS tự động bởi duyle. Hỗ trợ ESign, KSign và cài đặt trực tiếp." />
+    <meta property="twitter:image" content="/favicon.svg" />
+    
+    <script type="module" crossorigin src="/assets/index-CVP3xP2b.js"></script>
+    <link rel="stylesheet" crossorigin href="/assets/index-B2lPsYC1.css">
+
+    <style>
+      :root {
+        --font-main: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+        --font-mono: 'JetBrains Mono', monospace;
+        --primary: #4f46e5;
+        --primary-glow: rgba(79, 70, 229, 0.25);
+        --cyan: #0284c7;
+        --emerald: #059669;
+        --bg-light: #f8fafc;
+        --card-bg: rgba(255, 255, 255, 0.92);
+        --card-border: #e2e8f0;
+        --text-main: #0f172a;
+        --text-sub: #64748b;
+      }
+
+      * {
+        font-family: var(--font-main) !important;
+        box-sizing: border-box;
+      }
+
+      /* Ẩn dropzone ZIP mặc định và input P12 của React */
+      main div.border-dashed {
+        position: absolute !important;
+        width: 1px !important;
+        height: 1px !important;
+        padding: 0 !important;
+        margin: 0 !important;
+        overflow: hidden !important;
+        clip: rect(0, 0, 0, 0) !important;
+        border: 0 !important;
+        opacity: 0 !important;
+        pointer-events: none !important;
+      }
+
+      main div:has(> input[placeholder*="Mật khẩu P12"]),
+      main div.mb-6:has(input[placeholder*="Mật khẩu P12"]) {
+        display: none !important;
+      }
+
+      /* NỀN SÁNG CAO CẤP (APPLE PURE FROST) */
+      body {
+        background-color: #f8fafc !important;
+        background-image: 
+          radial-gradient(circle at 15% 15%, rgba(99, 102, 241, 0.08) 0%, transparent 40%),
+          radial-gradient(circle at 85% 20%, rgba(6, 182, 212, 0.08) 0%, transparent 40%),
+          radial-gradient(circle at 50% 80%, rgba(16, 185, 129, 0.06) 0%, transparent 45%),
+          radial-gradient(rgba(148, 163, 184, 0.18) 1px, transparent 1px) !important;
+        background-size: 100% 100%, 100% 100%, 100% 100%, 26px 26px !important;
+        background-attachment: fixed !important;
+        color: var(--text-main) !important;
+        min-height: 100vh;
+        position: relative;
+        overflow-x: hidden;
+      }
+
+      #root {
+        position: relative;
+        z-index: 2;
+      }
+
+      /* GHI ĐÈ GIAO DIỆN REACT SANG MÀU SÁNG */
+      #root > div {
+        background: transparent !important;
+        color: var(--text-main) !important;
+      }
+
+      /* HEADER */
+      header {
+        background: rgba(255, 255, 255, 0.82) !important;
+        backdrop-filter: blur(20px) saturate(180%) !important;
+        -webkit-backdrop-filter: blur(20px) saturate(180%) !important;
+        border-bottom: 1px solid rgba(226, 232, 240, 0.8) !important;
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.03) !important;
+      }
+
+      header span {
+        font-weight: 800 !important;
+        font-size: 18px !important;
+        color: #0f172a !important;
+        background: linear-gradient(135deg, #0f172a 30%, #4f46e5 100%);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+      }
+
+      header img,
+      header img[src*="avatar"] {
+        width: 36px !important;
+        height: 36px !important;
+        border-radius: 12px !important;
+        object-fit: cover !important;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08) !important;
+        border: 1.5px solid #e2e8f0 !important;
+      }
+
+      /* CARD CHÍNH */
+      main > div {
+        background: var(--card-bg) !important;
+        backdrop-filter: blur(28px) saturate(190%) !important;
+        -webkit-backdrop-filter: blur(28px) saturate(190%) !important;
+        border: 1px solid var(--card-border) !important;
+        border-radius: 26px !important;
+        box-shadow: 
+          0 20px 40px -15px rgba(15, 23, 42, 0.07),
+          0 0 1px rgba(0, 0, 0, 0.08) !important;
+        padding: 24px !important;
+        max-width: 580px !important;
+        margin: 0 auto !important;
+        color: var(--text-main) !important;
+        transition: border-color 0.25s ease, box-shadow 0.25s ease;
+      }
+
+      main > div:hover {
+        border-color: #cbd5e1 !important;
+        box-shadow: 
+          0 25px 50px -15px rgba(15, 23, 42, 0.1),
+          0 0 1px rgba(0, 0, 0, 0.1) !important;
+      }
+
+      main h1 {
+        font-size: 22px !important;
+        font-weight: 800 !important;
+        letter-spacing: -0.02em !important;
+        color: #0f172a !important;
+        background: linear-gradient(135deg, #0f172a 40%, #4f46e5 100%);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+      }
+
+      main p {
+        color: #64748b !important;
+      }
+
+      main label {
+        color: #334155 !important;
+      }
+
+      /* Nút chọn App (ESIGN) */
+      main .flex.justify-center.gap-3 button {
+        background: #f1f5f9 !important;
+        border: 1px solid #e2e8f0 !important;
+        border-radius: 14px !important;
+        padding: 10px 18px !important;
+        font-weight: 700 !important;
+        color: #334155 !important;
+        transition: all 0.2s ease !important;
+      }
+
+      main .flex.justify-center.gap-3 button:hover {
+        background: #e2e8f0 !important;
+        color: #0f172a !important;
+      }
+
+      /* Nút Ký & Cài Đặt của React */
+      main button.bg-\[\#0a84ff\],
+      main button.py-4 {
+        background: linear-gradient(135deg, #4f46e5 0%, #0284c7 100%) !important;
+        border-radius: 16px !important;
+        font-weight: 800 !important;
+        color: #ffffff !important;
+        box-shadow: 0 8px 24px rgba(79, 70, 229, 0.3) !important;
+        border: none !important;
+        transition: all 0.2s ease !important;
+      }
+
+      main button.bg-\[\#0a84ff\]:hover,
+      main button.py-4:hover {
+        transform: translateY(-2px) !important;
+        box-shadow: 0 12px 28px rgba(79, 70, 229, 0.45) !important;
+      }
+
+      /* Màn hình Đang yêu cầu cài đặt */
+      main .bg-\[\#1c1c1e\] {
+        background: #ffffff !important;
+        border: 1px solid #e2e8f0 !important;
+        box-shadow: 0 20px 40px rgba(0, 0, 0, 0.06) !important;
+      }
+
+      /* FOOTER */
+      footer {
+        background: rgba(248, 250, 252, 0.85) !important;
+        backdrop-filter: blur(16px) !important;
+        border-top: 1px solid #e2e8f0 !important;
+        padding: 24px 16px !important;
+      }
+
+      footer div, footer p {
+        color: #64748b !important;
+      }
+
+      /* SHIMMER EFFECT */
+      .btn-shimmer-wrap {
+        position: relative;
+        overflow: hidden;
+      }
+
+      .btn-shimmer-wrap::after {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 60%;
+        height: 100%;
+        background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.35), transparent);
+        transform: skewX(-20deg) translateX(-150%);
+        animation: shimmer-sweep 3.5s infinite;
+        pointer-events: none;
+      }
+
+      @keyframes shimmer-sweep {
+        0% { transform: skewX(-20deg) translateX(-150%); }
+        40% { transform: skewX(-20deg) translateX(250%); }
+        100% { transform: skewX(-20deg) translateX(250%); }
+      }
+
+      /* Radar dot */
+      .radar-dot {
+        position: relative;
+        display: inline-block;
+        width: 8px;
+        height: 8px;
+        background-color: #059669;
+        border-radius: 50%;
+      }
+      .radar-dot::after {
+        content: '';
+        position: absolute;
+        inset: -3px;
+        border-radius: 50%;
+        border: 2px solid #059669;
+        animation: radar-ping 1.8s cubic-bezier(0, 0, 0.2, 1) infinite;
+        opacity: 0.75;
+      }
+      @keyframes radar-ping {
+        0% { transform: scale(0.9); opacity: 0.8; }
+        80%, 100% { transform: scale(2.2); opacity: 0; }
+      }
+
+      @keyframes spin {
+        0% { transform: rotate(0deg); }
+        100% { transform: rotate(360deg); }
+      /* Ẩn triệt để header thừa của React */
+      #root header, header.border-b {
+        display: none !important;
+      }
+
+      /* Hiệu ứng giao diện nhẹ - ưu tiên mượt trên iPhone */
+      @keyframes duyleFadeUp {
+        from { opacity: 0; transform: translateY(14px); }
+        to { opacity: 1; transform: translateY(0); }
+      }
+      @keyframes duyleSoftPulse {
+        0%, 100% { box-shadow: 0 4px 18px rgba(5, 150, 105, .22); }
+        50% { box-shadow: 0 8px 28px rgba(5, 150, 105, .38); }
+      }
+      @keyframes duyleSuccessPulse {
+        0% { transform: scale(.985); opacity: .75; }
+        55% { transform: scale(1.012); opacity: 1; }
+        100% { transform: scale(1); opacity: 1; }
+      }
+      @keyframes duyleSweep {
+        0% { transform: translateX(-160%) skewX(-20deg); }
+        55%, 100% { transform: translateX(260%) skewX(-20deg); }
+      }
+      #udidDirectSection {
+        animation: duyleFadeUp .45s cubic-bezier(.22,.8,.3,1) both;
+      }
+      #tabBtnActivate, #tabBtnUdid,
+      #planChoice10, #planChoice365,
+      #btnAutoBankPay {
+        -webkit-tap-highlight-color: transparent;
+        transition: transform .18s ease, box-shadow .22s ease, filter .22s ease, background .22s ease !important;
+      }
+      #tabBtnActivate:active, #tabBtnUdid:active,
+      #planChoice10:active, #planChoice365:active,
+      #btnAutoBankPay:active {
+        transform: scale(.975);
+      }
+      #planChoice10:hover, #planChoice365:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 8px 20px rgba(15, 23, 42, .10) !important;
+      }
+      #btnAutoBankPay {
+        position: relative;
+        overflow: hidden;
+        isolation: isolate;
+        animation: duyleSoftPulse 2.8s ease-in-out infinite;
+      }
+      #btnAutoBankPay::after {
+        content: '';
+        position: absolute;
+        top: -35%;
+        left: -35%;
+        width: 22%;
+        height: 170%;
+        background: linear-gradient(90deg, transparent, rgba(255,255,255,.34), transparent);
+        transform: translateX(-160%) skewX(-20deg);
+        animation: duyleSweep 3.8s ease-in-out infinite;
+        pointer-events: none;
+        z-index: 0;
+      }
+      #btnAutoBankPay > * { position: relative; z-index: 1; }
+      #mainActivateStatus[style*="display: block"],
+      #mainUdidStatus[style*="display: block"] {
+        animation: duyleSuccessPulse .38s cubic-bezier(.2,.8,.3,1) both;
+      }
+      @media (prefers-reduced-motion: reduce) {
+        #udidDirectSection, #btnAutoBankPay,
+        #mainActivateStatus, #mainUdidStatus { animation: none !important; }
+        #btnAutoBankPay::after { display: none !important; }
+      }
+    </style>
+  </head>
+
+  <body class="min-h-screen flex flex-col tab-activate">
+    <!-- Thanh điều hướng cố định trên cùng -->
+    <div style="position: sticky; top: 0; z-index: 50; width: 100%; background: rgba(255, 255, 255, 0.85); backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px); border-bottom: 1px solid rgba(226, 232, 240, 0.9);">
+      <div style="max-width: 900px; margin: 0 auto; padding: 12px 16px; display: flex; align-items: center; justify-content: space-between; gap: 12px;">
+        <div style="display: flex; align-items: center; gap: 10px; cursor: pointer;" onclick="window.location.href='/'">
+          <div style="position: relative;">
+            <img src="/duyle.gif" alt="duyle" style="width: 38px; height: 38px; border-radius: 12px; object-fit: cover; border: 1.5px solid #e2e8f0; box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08); display: block;">
+            <div style="position: absolute; bottom: -2px; right: -2px; width: 10px; height: 10px; background: #059669; border: 2px solid #ffffff; border-radius: 50%;"></div>
+          </div>
+          <div>
+            <div style="font-weight: 800; font-size: 16px; letter-spacing: -0.02em; color: #0f172a;">
+              duyle
+            </div>
+            <div style="font-size: 11px; color: #64748b; display: flex; align-items: center; gap: 5px;">
+              <span class="radar-dot"></span>
+              <span>Online 24/7 • Kích Hoạt Tự Động</span>
+            </div>
+          </div>
+        </div>
+
+        <div style="display: flex; align-items: center; gap: 8px;">
+          <a href="https://t.me/lethanhduyy" target="_blank" style="background: linear-gradient(135deg, #0284c7 0%, #0369a1 100%); border: none; color: #ffffff; font-size: 12px; font-weight: 700; padding: 7px 14px; border-radius: 10px; text-decoration: none; display: inline-flex; align-items: center; gap: 5px; box-shadow: 0 3px 10px rgba(2, 132, 199, 0.25);">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm4.64 6.8c-.15 1.58-.8 5.42-1.13 7.19-.14.75-.42 1-.68 1.03-.58.05-1.02-.38-1.58-.75-.88-.58-1.38-.94-2.23-1.5-.99-.65-.35-1.01.22-1.59.15-.15 2.71-2.48 2.76-2.69a.2.2 0 00-.05-.18c-.06-.05-.14-.03-.21-.02-.09.02-1.49.95-4.22 2.79-.4.27-.76.41-1.08.4-.36-.01-1.04-.2-1.55-.37-.63-.2-1.12-.31-1.08-.66.02-.18.27-.36.74-.55 2.92-1.27 4.86-2.11 5.83-2.52 2.77-1.15 3.35-1.35 3.73-1.35.08 0 .27.02.39.12.1.08.13.19.14.27-.01.06.01.24 0 .37z"/></svg>
+            <span>@ngthanhnew</span>
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <div id="root"></div>
+
+    <script>
+      let isLoadingUdidCert = false;
+
+      async function handleDownloadZipNoUrl() {
+        const udidInput = document.getElementById('mainUdidInput') || document.getElementById('mainUdidForCode');
+        const udid = udidInput ? udidInput.value.trim() : '';
+        if (!udid) {
+          alert('Vui lòng nhập mã UDID!');
+          return;
+        }
+
+        try {
+          const res = await fetch(`/api/download-cert/${encodeURIComponent(udid)}`);
+          if (!res.ok) {
+            const data = await res.json().catch(() => ({}));
+            alert('⚠️ ' + (data.error || 'Chứng chỉ chưa sẵn sàng tải về'));
+            return;
+          }
+          const blob = await res.blob();
+          const downloadUrl = window.URL.createObjectURL(blob);
+          const a = document.createElement('a');
+          a.href = downloadUrl;
+          a.download = `${udid}.zip`;
+          document.body.appendChild(a);
+          a.click();
+          a.remove();
+          window.URL.revokeObjectURL(downloadUrl);
+        } catch (err) {
+          alert('Lỗi tải chứng chỉ: ' + err.message);
+        }
+      }
+
+      function setP12PasswordInReact(password = '1') {
+        const allInputs = document.querySelectorAll('main input');
+        allInputs.forEach(inp => {
+          if (inp.placeholder && inp.placeholder.toLowerCase().includes('p12')) {
+            for (const k of Object.keys(inp)) {
+              if (k.startsWith('__reactProps$') && typeof inp[k]?.onChange === 'function') {
+                try {
+                  inp[k].onChange({ target: { value: password } });
+                } catch (e) {}
+              }
+            }
+            const nativeSetter = Object.getOwnPropertyDescriptor(window.HTMLInputElement.prototype, 'value')?.set;
+            if (nativeSetter) {
+              nativeSetter.call(inp, password);
+            } else {
+              inp.value = password;
+            }
+            inp.dispatchEvent(new Event('input', { bubbles: true }));
+            inp.dispatchEvent(new Event('change', { bubbles: true }));
+          }
+        });
+      }
+
+      function findReactSignButton() {
+        const buttons = Array.from(document.querySelectorAll('main button'));
+        return buttons.find(b => {
+          if (b.id === 'btnActivateMain' || b.id === 'tabBtnActivate' || b.id === 'tabBtnUdid') return false;
+          const text = (b.textContent || '').trim();
+          return text.startsWith('Cài Đặt') || text.includes('Ký') || (b.className && b.className.includes('py-4') && !b.id);
+        });
+      }
+
+      async function injectZipIntoReact(file) {
+        let injected = false;
+
+        // Cách 1: Kích hoạt trực tiếp qua React Fiber Props của dropzone
+        const dropzone = document.querySelector('main div.border-dashed');
+        if (dropzone) {
+          for (const k of Object.keys(dropzone)) {
+            if (k.startsWith('__reactProps$') && typeof dropzone[k]?.onDrop === 'function') {
+              try {
+                dropzone[k].onDrop({
+                  preventDefault: () => {},
+                  stopPropagation: () => {},
+                  dataTransfer: { files: [file] }
+                });
+                injected = true;
+              } catch (e) {}
+              break;
+            }
+          }
+        }
+
+        // Cách 2: Kích hoạt trực tiếp qua React Fiber Props của file input
+        const fileInput = document.getElementById('file-upload') || document.querySelector('main input[type="file"]');
+        if (fileInput) {
+          for (const k of Object.keys(fileInput)) {
+            if (k.startsWith('__reactProps$') && typeof fileInput[k]?.onChange === 'function') {
+              try {
+                fileInput[k].onChange({
+                  preventDefault: () => {},
+                  stopPropagation: () => {},
+                  target: { files: [file] }
+                });
+                injected = true;
+              } catch (e) {}
+              break;
+            }
+          }
+
+          try {
+            const dt = new DataTransfer();
+            dt.items.add(file);
+            fileInput.files = dt.files;
+            fileInput.dispatchEvent(new Event('input', { bubbles: true }));
+            fileInput.dispatchEvent(new Event('change', { bubbles: true }));
+          } catch (e) {}
+        }
+
+        // Cách 3: Dispatch DragEvent drop chuẩn
+        if (dropzone) {
+          try {
+            const dt2 = new DataTransfer();
+            dt2.items.add(file);
+            const dropEvt = new DragEvent('drop', { bubbles: true, cancelable: true });
+            Object.defineProperty(dropEvt, 'dataTransfer', { value: dt2 });
+            dropzone.dispatchEvent(dropEvt);
+          } catch (e) {}
+        }
+
+        setP12PasswordInReact('1');
+
+        // Đợi React cập nhật state và re-render
+        for (let i = 0; i < 20; i++) {
+          const fileIndicator = document.querySelector('main div.bg-\\[\\#0a84ff\\]\\/10') || 
+                                Array.from(document.querySelectorAll('main span, main p')).find(el => el.textContent.includes('.zip'));
+          if (fileIndicator) {
+            injected = true;
+            break;
+          }
+          await new Promise(r => setTimeout(r, 50));
+        }
+
+        return injected;
+      }
+
+      async function autoLoadCertForPostPayChoices(udid, statusElement) {
+        if (!udid) throw new Error('Vui lòng nhập mã UDID!');
+
+        if (statusElement) {
+          statusElement.style.display = 'block';
+          statusElement.innerHTML = `
+            <div style="display:flex;align-items:center;gap:8px;justify-content:center;color:#4338ca;font-weight:700;">
+              <span style="display:inline-block;width:14px;height:14px;border:2px solid #4f46e5;border-top-color:transparent;border-radius:50%;animation:spin .8s linear infinite;"></span>
+              <span>✅ Đã thanh toán — đang chuẩn bị chứng chỉ để cài ứng dụng...</span>
+            </div>`;
+        }
+
+        const certRes = await fetch(`/api/download-cert/${encodeURIComponent(udid)}`);
+        if (!certRes.ok) {
+          const errData = await certRes.json().catch(() => ({}));
+          throw new Error(errData.error || errData.message || 'Chứng chỉ đang được khởi tạo, vui lòng thử lại sau ít phút.');
+        }
+
+        const blob = await certRes.blob();
+        const file = new File([blob], `${udid}.zip`, { type: 'application/zip' });
+        await injectZipIntoReact(file);
+        setP12PasswordInReact('1');
+        setInstallButtonVisibility(true);
+        await new Promise(resolve => setTimeout(resolve, 500));
+
+        if (statusElement) {
+          statusElement.style.background = '#ecfdf5';
+          statusElement.style.borderColor = '#86efac';
+          statusElement.style.color = '#047857';
+          statusElement.innerHTML = `
+            <div style="font-size:15px;font-weight:900;margin-bottom:5px;">✅ THANH TOÁN & KÍCH HOẠT THÀNH CÔNG!</div>
+            <div style="font-size:11px;color:#64748b;margin-bottom:10px;">Chọn ứng dụng muốn ký và cài đặt:</div>
+            <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;">
+              <button type="button" onclick="signPostPayApp('esign')" style="border:0;background:#2563eb;color:white;font-weight:800;padding:12px 7px;border-radius:11px;cursor:pointer;">📲 Cài ESign</button>
+              <button type="button" onclick="signPostPayApp('ksign')" style="border:0;background:#7c3aed;color:white;font-weight:800;padding:12px 7px;border-radius:11px;cursor:pointer;">📲 Cài KSign</button>
+              <button type="button" onclick="signPostPayApp('esign2')" style="grid-column:1 / -1;border:0;background:#ea580c;color:white;font-weight:800;padding:12px 7px;border-radius:11px;cursor:pointer;">📲 Cài ESign 2.0</button>
+              <button type="button" onclick="handleDownloadZipNoUrl()" style="grid-column:1 / -1;border:0;background:#059669;color:white;font-weight:800;padding:11px 8px;border-radius:11px;cursor:pointer;">📦 Tải chứng chỉ</button>
+            </div>
+            <div style="font-size:10px;color:#64748b;margin-top:8px;">Bấm app bạn muốn cài. Hệ thống sẽ ký app bằng chứng chỉ vừa kích hoạt.</div>`;
+        }
+        return true;
+      }
+
+      async function signPostPayApp(appId) {
+        const statusElement = document.getElementById('autoBankLiveStatus');
+        const appName = appId === 'ksign' ? 'KSign' : (appId === 'esign2' ? 'ESign 2.0' : 'ESign');
+        try {
+          const closeBtn = Array.from(document.querySelectorAll('button')).find(el =>
+            (el.textContent || '').trim() === 'Đóng'
+          );
+          if (closeBtn) closeBtn.click();
+          await new Promise(resolve => setTimeout(resolve, 250));
+
+          const expectedLabel = appId === 'esign2' ? 'esign 2.0' : appId;
+          const appBtn = Array.from(document.querySelectorAll('main button')).find(el => {
+            const label = (el.textContent || '').trim().toLowerCase();
+            return label === expectedLabel ||
+              (appId === 'esign' && label === 'esign') ||
+              (appId === 'ksign' && label === 'ksign') ||
+              (appId === 'esign2' && (label === 'esign2' || label.includes('esign 2.0')));
+          });
+          if (!appBtn) throw new Error(`Không tìm thấy lựa chọn ${appName}`);
+          appBtn.click();
+          setInstallButtonVisibility(true);
+          await new Promise(resolve => setTimeout(resolve, 350));
+          setP12PasswordInReact('1');
+
+          const signBtn = findReactSignButton();
+          if (!signBtn) throw new Error('Không tìm thấy nút ký ứng dụng');
+
+          if (statusElement) {
+            statusElement.innerHTML = `
+              <div style="font-weight:800;color:#4338ca;margin-bottom:7px;">✍️ Đang ký ${appName}...</div>
+              <div style="height:5px;background:#e2e8f0;border-radius:4px;overflow:hidden;"><div style="width:100%;height:100%;background:#4f46e5;"></div></div>
+              <div style="font-size:10px;color:#64748b;margin-top:6px;">Vui lòng không đóng trang.</div>`;
+          }
+
+          signBtn.click();
+          const startedAt = Date.now();
+          const timer = setInterval(() => {
+            const installBtn = Array.from(document.querySelectorAll('button, a')).find(el => {
+              const t = (el.textContent || '').trim();
+              return t === 'Cài đặt ngay' || t.includes('Cài đặt trực tiếp');
+            });
+            const successTitle = Array.from(document.querySelectorAll('h1,h2,h3,p,div')).some(el =>
+              (el.textContent || '').trim() === 'Ký thành công!'
+            );
+
+            if (installBtn || successTitle) {
+              clearInterval(timer);
+              if (statusElement) {
+                statusElement.innerHTML = `
+                  <div style="font-size:15px;font-weight:900;color:#047857;margin-bottom:9px;">✅ KÝ ${appName.toUpperCase()} THÀNH CÔNG!</div>
+                  <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;">
+                    <button type="button" id="btnInstallSelectedAfterPay" style="grid-column:1 / -1;border:0;background:#2563eb;color:white;font-weight:800;padding:12px 8px;border-radius:11px;cursor:pointer;">📲 Cài ${appName} ngay</button>
+                    <button type="button" onclick="signPostPayApp('esign')" style="border:1px solid #bfdbfe;background:#eff6ff;color:#1d4ed8;font-weight:800;padding:10px 6px;border-radius:11px;cursor:pointer;">ESign</button>
+                    <button type="button" onclick="signPostPayApp('ksign')" style="border:1px solid #ddd6fe;background:#f5f3ff;color:#6d28d9;font-weight:800;padding:10px 6px;border-radius:11px;cursor:pointer;">KSign</button>
+                    <button type="button" onclick="signPostPayApp('esign2')" style="grid-column:1 / -1;border:1px solid #fed7aa;background:#fff7ed;color:#c2410c;font-weight:800;padding:10px 6px;border-radius:11px;cursor:pointer;">ESign 2.0</button>
+                    <button type="button" onclick="handleDownloadZipNoUrl()" style="grid-column:1 / -1;border:0;background:#059669;color:white;font-weight:800;padding:10px 8px;border-radius:11px;cursor:pointer;">📦 Tải chứng chỉ</button>
+                  </div>`;
+                const b = document.getElementById('btnInstallSelectedAfterPay');
+                if (b) b.onclick = () => {
+                  const currentInstall = Array.from(document.querySelectorAll('button, a')).find(el => {
+                    const t = (el.textContent || '').trim();
+                    return t === 'Cài đặt ngay' || t.includes('Cài đặt trực tiếp');
+                  });
+                  if (currentInstall) currentInstall.click();
+                  else alert('Liên kết cài đặt chưa sẵn sàng. Vui lòng đợi vài giây rồi thử lại.');
+                };
+              }
+            } else if (Date.now() - startedAt > 120000) {
+              clearInterval(timer);
+              if (statusElement) statusElement.innerHTML = `⚠️ Ký ${appName} quá thời gian chờ. Vui lòng thử lại.`;
+            }
+          }, 500);
+        } catch (err) {
+          if (statusElement) {
+            statusElement.style.background = '#fff7ed';
+            statusElement.style.borderColor = '#fed7aa';
+            statusElement.style.color = '#9a3412';
+            statusElement.innerHTML = `⚠️ Không thể ký ${appName}: ${escapeAutoBankHtml(err?.message || String(err))}`;
+          } else {
+            alert(`Không thể ký ${appName}: ` + (err?.message || err));
+          }
+        }
+      }
+
+      async function autoLoadCertAndSign(udid, statusElement) {
+        if (!udid) {
+          throw new Error('Vui lòng nhập mã UDID!');
+        }
+
+        if (statusElement) {
+          statusElement.style.display = 'block';
+          statusElement.innerHTML = `
+            <div style="display: flex; flex-direction: column; gap: 8px;">
+              <div style="display: flex; align-items: center; gap: 8px; font-weight: 600; color: #4338ca;">
+                <span style="display: inline-block; width: 14px; height: 14px; border: 2px solid #4f46e5; border-top-color: transparent; border-radius: 50%; animation: spin 0.8s linear infinite;"></span>
+                <span>Bước 1/3: Đang tải chứng chỉ từ hệ thống duyle...</span>
+              </div>
+              <div style="height: 4px; width: 100%; background: #e2e8f0; border-radius: 2px; overflow: hidden;">
+                <div style="width: 35%; height: 100%; background: linear-gradient(90deg, #4f46e5, #0284c7); border-radius: 2px;"></div>
+              </div>
+            </div>
+          `;
+        }
+
+        const certRes = await fetch(`/api/download-cert/${encodeURIComponent(udid)}`);
+        if (!certRes.ok) {
+          const errData = await certRes.json().catch(() => ({}));
+          throw new Error(errData.error || errData.message || 'Không tìm thấy chứng chỉ cho UDID này hoặc chứng chỉ đang khởi tạo');
+        }
+
+        const blob = await certRes.blob();
+        const file = new File([blob], `${udid}.zip`, { type: 'application/zip' });
+
+        if (statusElement) {
+          statusElement.innerHTML = `
+            <div style="display: flex; flex-direction: column; gap: 8px;">
+              <div style="display: flex; align-items: center; gap: 8px; font-weight: 600; color: #4338ca;">
+                <span style="display: inline-block; width: 14px; height: 14px; border: 2px solid #4f46e5; border-top-color: transparent; border-radius: 50%; animation: spin 0.8s linear infinite;"></span>
+                <span>Bước 2/3: Nạp chứng chỉ & mật khẩu vào bộ ký WebAssembly...</span>
+              </div>
+              <div style="height: 4px; width: 100%; background: #e2e8f0; border-radius: 2px; overflow: hidden;">
+                <div style="width: 75%; height: 100%; background: linear-gradient(90deg, #4f46e5, #0284c7); border-radius: 2px;"></div>
+              </div>
+            </div>
+          `;
+        }
+
+        await injectZipIntoReact(file);
+        setP12PasswordInReact('1');
+
+        if (statusElement) {
+          statusElement.innerHTML = `
+            <div style="display: flex; flex-direction: column; gap: 8px;">
+              <div style="display: flex; align-items: center; gap: 8px; font-weight: 700; color: #059669;">
+                <span>✔ Bước 3/3: Đã nạp chứng chỉ! Đang ký ứng dụng ESIGN...</span>
+              </div>
+              <div style="height: 4px; width: 100%; background: #e2e8f0; border-radius: 2px; overflow: hidden;">
+                <div style="width: 100%; height: 100%; background: #059669; border-radius: 2px;"></div>
+              </div>
+            </div>
+          `;
+        }
+
+        setInstallButtonVisibility(true);
+        await new Promise(resolve => setTimeout(resolve, 600));
+
+        const signBtn = findReactSignButton();
+        if (signBtn) {
+          signBtn.dataset.isAutoSigning = 'true';
+          signBtn.click();
+
+          // Chờ bộ ký hoàn tất và modal React xuất hiện, sau đó hiện nút cài ESign + tải cert ngay tại trạng thái Auto Bank.
+          if (statusElement) {
+            const startedAt = Date.now();
+            const successTimer = setInterval(() => {
+              const installBtn = Array.from(document.querySelectorAll('button, a')).find(el => {
+                const t = (el.textContent || '').trim();
+                return t === 'Cài đặt ngay' || t.includes('Cài đặt trực tiếp');
+              });
+              const successTitle = Array.from(document.querySelectorAll('h1,h2,h3,p,div')).some(el =>
+                (el.textContent || '').trim() === 'Ký thành công!'
+              );
+
+              if (installBtn || successTitle) {
+                clearInterval(successTimer);
+                statusElement.innerHTML = `
+                  <div style="background:#ecfdf5;border:1px solid #86efac;border-radius:14px;padding:14px;color:#047857;text-align:center;">
+                    <div style="font-size:15px;font-weight:800;margin-bottom:10px;">✅ KÍCH HOẠT & KÝ ESIGN THÀNH CÔNG!</div>
+                    <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;">
+                      <button type="button" id="btnInstallEsignAfterPay" style="border:0;background:#2563eb;color:white;font-weight:800;padding:11px 8px;border-radius:11px;cursor:pointer;">📲 Cài đặt ESign</button>
+                      <button type="button" onclick="handleSignKsignAfterPay()" style="border:0;background:#7c3aed;color:white;font-weight:800;padding:11px 8px;border-radius:11px;cursor:pointer;">✍️ Ký & Cài KSign</button>
+                      <button type="button" onclick="handleDownloadZipNoUrl()" style="grid-column:1 / -1;border:0;background:#059669;color:white;font-weight:800;padding:11px 8px;border-radius:11px;cursor:pointer;">📦 Tải chứng chỉ</button>
+                    </div>
+                    <div style="font-size:10px;color:#64748b;margin-top:8px;">Nếu iPhone không hiện cài đặt, hãy mở trang này bằng Safari.</div>
+                  </div>`;
+                const b = document.getElementById('btnInstallEsignAfterPay');
+                if (b) b.onclick = () => {
+                  const currentInstall = Array.from(document.querySelectorAll('button, a')).find(el => {
+                    const t = (el.textContent || '').trim();
+                    return t === 'Cài đặt ngay' || t.includes('Cài đặt trực tiếp');
+                  });
+                  if (currentInstall) currentInstall.click();
+                  else alert('Liên kết cài đặt chưa sẵn sàng. Vui lòng đợi vài giây rồi thử lại.');
+                };
+              } else if (Date.now() - startedAt > 120000) {
+                clearInterval(successTimer);
+              }
+            }, 500);
+          }
+        } else {
+          throw new Error('Không tìm thấy nút Ký & Cài Đặt trên giao diện');
+        }
+      }
+
+
+      async function handleSignKsignAfterPay() {
+        try {
+          const closeBtn = Array.from(document.querySelectorAll('button')).find(el =>
+            (el.textContent || '').trim() === 'Đóng'
+          );
+          if (closeBtn) closeBtn.click();
+          await new Promise(resolve => setTimeout(resolve, 350));
+
+          const ksignBtn = Array.from(document.querySelectorAll('button')).find(el =>
+            (el.textContent || '').trim().toLowerCase() === 'ksign'
+          );
+          if (!ksignBtn) throw new Error('Không tìm thấy lựa chọn KSign');
+          ksignBtn.click();
+          await new Promise(resolve => setTimeout(resolve, 350));
+
+          const signBtn = findReactSignButton();
+          if (!signBtn) throw new Error('Không tìm thấy nút Ký & Cài Đặt');
+          signBtn.click();
+        } catch (err) {
+          alert('Không thể bắt đầu ký KSign: ' + (err?.message || err));
+        }
+      }
+
+      async function loadCertByUdidIntoReact(udid) {
+        if (isLoadingUdidCert) return;
+        isLoadingUdidCert = true;
+
+        const statusDiv = document.getElementById('mainUdidStatus');
+        if (statusDiv) {
+          statusDiv.style.display = 'block';
+          statusDiv.innerHTML = `
+            <div style="display: flex; align-items: center; gap: 8px; color: #0284c7; font-weight: 600;">
+              <span style="display: inline-block; width: 14px; height: 14px; border: 2px solid #0284c7; border-top-color: transparent; border-radius: 50%; animation: spin 0.8s linear infinite;"></span>
+              <span>Đang kết nối kho chứng chỉ duyle...</span>
+            </div>
+          `;
+        }
+
+        try {
+          const certRes = await fetch(`/api/download-cert/${encodeURIComponent(udid)}`);
+          if (!certRes.ok) {
+            const errData = await certRes.json().catch(() => ({}));
+            throw new Error(errData.error || errData.message || 'Không tìm thấy chứng chỉ cho UDID này');
+          }
+
+          const blob = await certRes.blob();
+          const file = new File([blob], `${udid}.zip`, { type: 'application/zip' });
+
+          await injectZipIntoReact(file);
+          setP12PasswordInReact('1');
+
+          if (statusDiv) {
+            statusDiv.innerHTML = `
+              <div style="background: rgba(5, 150, 105, 0.08); border: 1px solid rgba(5, 150, 105, 0.25); border-radius: 14px; padding: 12px; margin-top: 8px;">
+                <div style="color: #065f46; font-weight: 700; margin-bottom: 6px; display: flex; align-items: center; gap: 6px;">
+                  <span>✔ Đã tự động nạp chứng chỉ vào bộ ký! Sẵn sàng bấm Cài Đặt ESIGN.</span>
+                </div>
+                <div style="font-size: 11px; color: #64748b; margin-bottom: 10px;">Mật khẩu P12 mặc định: <b style="color: #4f46e5;">1</b></div>
+                <button type="button" onclick="handleDownloadZipNoUrl()" style="width: 100%; background: #ffffff; border: 1px solid #cbd5e1; color: #0f172a; font-weight: 600; padding: 10px; border-radius: 12px; font-size: 13px; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 8px; box-shadow: 0 2px 6px rgba(0,0,0,0.04);">
+                  <span>📥 Tải File Chứng Chỉ (.zip)</span>
+                </button>
+              </div>
+            `;
+          }
+          return true;
+        } catch (err) {
+          if (statusDiv) {
+            statusDiv.innerHTML = `<div style="background: rgba(239, 68, 68, 0.08); border: 1px solid rgba(239, 68, 68, 0.25); border-radius: 12px; padding: 10px; color: #b91c1c; font-weight: 600; font-size: 12px;">❌ ${err.message}</div>`;
+          }
+          return false;
+        } finally {
+          isLoadingUdidCert = false;
+        }
+      }
+
+      async function pasteToInput(elementId, toUpper = false) {
+        try {
+          const text = await navigator.clipboard.readText();
+          if (text) {
+            const el = document.getElementById(elementId);
+            if (el) {
+              el.value = toUpper ? text.trim().toUpperCase() : text.trim();
+              el.dispatchEvent(new Event('input', { bubbles: true }));
+              el.dispatchEvent(new Event('change', { bubbles: true }));
+            }
+          }
+        } catch (err) {
+          alert('Vui lòng cấp quyền truy cập clipboard hoặc dán thủ công.');
+        }
+      }
+
+      let currentMainTab = 'activate';
+
+      function setInstallButtonVisibility(show) {
+        const allButtons = document.querySelectorAll('main button');
+        allButtons.forEach(btn => {
+          if (btn.id !== 'btnActivateMain' && btn.id !== 'tabBtnActivate' && btn.id !== 'tabBtnUdid') {
+            const text = (btn.textContent || '').trim();
+            if (text.startsWith('Cài Đặt') || text.includes('Đang Xử Lý') || (btn.className && btn.className.includes('py-4'))) {
+              btn.style.display = show ? '' : 'none';
+            }
+          }
+        });
+      }
+
+      function switchMainTab(tab) {
+        currentMainTab = tab;
+        document.body.classList.toggle('tab-activate', tab === 'activate');
+        const tabBtnActivate = document.getElementById('tabBtnActivate');
+        const tabBtnUdid = document.getElementById('tabBtnUdid');
+        const tabContentActivate = document.getElementById('tabContentActivate');
+        const tabContentUdid = document.getElementById('tabContentUdid');
+
+        if (tab === 'activate') {
+          tabBtnActivate.style.background = '#ffffff';
+          tabBtnActivate.style.color = '#4f46e5';
+          tabBtnActivate.style.boxShadow = '0 3px 10px rgba(0, 0, 0, 0.08)';
+          tabBtnUdid.style.background = 'transparent';
+          tabBtnUdid.style.color = '#64748b';
+          tabBtnUdid.style.boxShadow = 'none';
+          tabContentActivate.style.display = 'block';
+          tabContentUdid.style.display = 'none';
+          setInstallButtonVisibility(false);
+        } else {
+          tabBtnUdid.style.background = '#ffffff';
+          tabBtnUdid.style.color = '#4f46e5';
+          tabBtnUdid.style.boxShadow = '0 3px 10px rgba(0, 0, 0, 0.08)';
+          tabBtnActivate.style.background = 'transparent';
+          tabBtnActivate.style.color = '#64748b';
+          tabBtnActivate.style.boxShadow = 'none';
+          tabContentUdid.style.display = 'block';
+          tabContentActivate.style.display = 'none';
+          setInstallButtonVisibility(true);
+        }
+      }
+
+      async function handleActivateFromMain() {
+        const codeInput = document.getElementById('mainCodeInput');
+        const udidInput = document.getElementById('mainUdidForCode');
+        const statusDiv = document.getElementById('mainActivateStatus');
+        const btn = document.getElementById('btnActivateMain');
+
+        const code = codeInput ? codeInput.value.trim().toUpperCase() : '';
+        const udid = udidInput ? udidInput.value.trim() : '';
+
+        if (!code) {
+          alert('Vui lòng nhập Mã kích hoạt!');
+          return;
+        }
+        if (!udid) {
+          alert('Vui lòng nhập mã UDID của máy!');
+          return;
+        }
+
+        btn.disabled = true;
+        btn.style.opacity = '0.7';
+        statusDiv.style.display = 'block';
+        statusDiv.style.background = 'rgba(79, 70, 229, 0.08)';
+        statusDiv.style.border = '1px solid rgba(79, 70, 229, 0.25)';
+        statusDiv.style.borderRadius = '16px';
+        statusDiv.style.color = '#3730a3';
+        statusDiv.innerHTML = `
+          <div style="display: flex; align-items: center; gap: 8px; font-weight: 600;">
+            <span style="display: inline-block; width: 14px; height: 14px; border: 2px solid #4f46e5; border-top-color: transparent; border-radius: 50%; animation: spin 0.8s linear infinite;"></span>
+            <span>Đang xác thực yêu cầu & tiến hành kích hoạt UDID...</span>
+          </div>
+        `;
+
+        try {
+          const res = await fetch('/api/activate', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ code, udid })
+          });
+          const data = await res.json();
+
+          if (!res.ok || !data.success) {
+            statusDiv.style.background = 'rgba(239, 68, 68, 0.08)';
+            statusDiv.style.border = '1px solid rgba(239, 68, 68, 0.25)';
+            statusDiv.style.color = '#b91c1c';
+            statusDiv.innerHTML = `<div style="font-weight: 600;">❌ ${data.message || 'Kích hoạt thất bại. Vui lòng kiểm tra lại mã.'}</div>`;
+            btn.disabled = false;
+            btn.style.opacity = '1';
+            return;
+          }
+
+          statusDiv.style.background = 'rgba(5, 150, 105, 0.08)';
+          statusDiv.style.border = '1px solid rgba(5, 150, 105, 0.25)';
+          statusDiv.style.color = '#065f46';
+          statusDiv.innerHTML = `
+            <div style="font-size: 15px; font-weight: 800; color: #059669; margin-bottom: 6px; display: flex; align-items: center; gap: 6px;">
+              <span>🎉 KÍCH HOẠT THÀNH CÔNG!</span>
+            </div>
+            <div id="activateSignStep" style="margin-top: 4px; font-size: 12px; color: #4338ca;">
+              ⏳ Đang nạp chứng chỉ & tự động ký cài đặt ứng dụng ESIGN...
+            </div>
+            <button type="button" onclick="handleDownloadZipNoUrl()" style="margin-top: 12px; width: 100%; box-sizing: border-box; background: #ffffff; border: 1px solid #cbd5e1; color: #0f172a; font-weight: 600; padding: 10px 14px; border-radius: 12px; font-size: 13px; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 6px; box-shadow: 0 2px 6px rgba(0,0,0,0.04);">
+              <span>📥 Tải File Chứng Chỉ Gốc (.zip)</span>
+            </button>
+          `;
+
+          const stepEl = document.getElementById('activateSignStep');
+          try {
+            await autoLoadCertAndSign(udid, stepEl);
+          } catch (signErr) {
+            if (stepEl) {
+              stepEl.innerHTML = `
+                <div style="background: #fefce8; border: 1px solid #fef08a; border-radius: 10px; padding: 10px; margin-top: 8px; color: #854d0e; font-size: 12px; line-height: 1.5;">
+                  ℹ️ <b>Thông báo:</b> ${signErr.message}<br>
+                  👉 Thiết bị đã được kích hoạt thành công trên hệ thống. Sau ít phút bạn có thể sang tab <b>"Tra Cứu UDID"</b> để tải file cert hoặc ký cài đặt app!
+                </div>
+              `;
+            }
+          }
+
+        } catch (err) {
+          statusDiv.style.background = 'rgba(239, 68, 68, 0.08)';
+          statusDiv.style.border = '1px solid rgba(239, 68, 68, 0.25)';
+          statusDiv.style.color = '#b91c1c';
+          statusDiv.innerHTML = `❌ Lỗi kết nối: ${err.message}`;
+        } finally {
+          btn.disabled = false;
+          btn.style.opacity = '1';
+        }
+      }
+
+
+      let autoBankPollTimer = null;
+
+      function escapeAutoBankHtml(value) {
+        return String(value ?? '')
+          .replace(/&/g, '&amp;')
+          .replace(/</g, '&lt;')
+          .replace(/>/g, '&gt;')
+          .replace(/"/g, '&quot;')
+          .replace(/'/g, '&#039;');
+      }
+
+      function formatVnd(value) {
+        return Number(value || 0).toLocaleString('vi-VN') + 'đ';
+      }
+
+      let selectedAutoBankPlan = '10d';
+
+      function selectAutoBankPlan(planId) {
+        selectedAutoBankPlan = planId === '365d' ? '365d' : '10d';
+        const p10 = document.getElementById('planChoice10');
+        const p365 = document.getElementById('planChoice365');
+        const payBtn = document.getElementById('btnAutoBankPay');
+        if (p10) {
+          const active = selectedAutoBankPlan === '10d';
+          p10.style.background = active ? 'linear-gradient(135deg,#059669 0%,#10b981 100%)' : '#ffffff';
+          p10.style.color = active ? '#ffffff' : '#334155';
+          p10.style.borderColor = active ? '#059669' : '#cbd5e1';
+          p10.style.boxShadow = active ? '0 4px 14px rgba(5,150,105,.22)' : 'none';
+        }
+        if (p365) {
+          const active = selectedAutoBankPlan === '365d';
+          p365.style.background = active ? 'linear-gradient(135deg,#4f46e5 0%,#7c3aed 100%)' : '#ffffff';
+          p365.style.color = active ? '#ffffff' : '#334155';
+          p365.style.borderColor = active ? '#4f46e5' : '#cbd5e1';
+          p365.style.boxShadow = active ? '0 4px 14px rgba(79,70,229,.22)' : 'none';
+        }
+        if (payBtn) {
+          payBtn.innerHTML = selectedAutoBankPlan === '365d'
+            ? '<span>🏦 THANH TOÁN AUTO BANK — 150.000Đ</span>'
+            : '<span>🏦 THANH TOÁN AUTO BANK — 50.000Đ</span>';
+        }
+      }
+
+      function resetAutoBankButtons() {
+        const payBtn = document.getElementById('btnAutoBankPay');
+        const p10 = document.getElementById('planChoice10');
+        const p365 = document.getElementById('planChoice365');
+        if (payBtn) { payBtn.disabled = false; payBtn.style.opacity = '1'; }
+        if (p10) { p10.disabled = false; p10.style.opacity = '1'; }
+        if (p365) { p365.disabled = false; p365.style.opacity = '1'; }
+        selectAutoBankPlan(selectedAutoBankPlan);
+      }
+
+      async function handleAutoBankPayment(planId = selectedAutoBankPlan) {
+        planId = planId === '365d' ? '365d' : '10d';
+        const udidInput = document.getElementById('mainUdidForCode');
+        const statusDiv = document.getElementById('mainActivateStatus');
+        const btn = document.getElementById('btnAutoBankPay');
+        const udid = udidInput ? udidInput.value.trim() : '';
+
+        if (!udid) {
+          alert('Vui lòng nhập mã UDID của máy trước khi thanh toán!');
+          return;
+        }
+
+        if (autoBankPollTimer) {
+          clearInterval(autoBankPollTimer);
+          autoBankPollTimer = null;
+        }
+
+        const p10 = document.getElementById('planChoice10');
+        const p365 = document.getElementById('planChoice365');
+        btn.disabled = true;
+        btn.style.opacity = '0.7';
+        if (p10) { p10.disabled = true; p10.style.opacity = '0.55'; }
+        if (p365) { p365.disabled = true; p365.style.opacity = '0.55'; }
+        btn.innerHTML = '<span>⏳ ĐANG TẠO MÃ THANH TOÁN...</span>';
+        statusDiv.style.display = 'block';
+        statusDiv.style.background = 'rgba(5, 150, 105, 0.06)';
+        statusDiv.style.border = '1px solid rgba(5, 150, 105, 0.2)';
+        statusDiv.style.color = '#065f46';
+        statusDiv.innerHTML = '<div style="font-weight:700;">Đang tạo đơn thanh toán VietQR...</div>';
+
+        try {
+          const res = await fetch('/api/payment/create', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ udid, plan: planId })
+          });
+          const data = await res.json();
+          if (!res.ok || !data.success || !data.order) throw new Error(data.message || 'Không tạo được đơn thanh toán.');
+
+          const o = data.order;
+          localStorage.setItem('vanthang_auto_bank_order', JSON.stringify({ orderCode: o.orderCode, udid, planId, createdAt: Date.now(), expiresAt: o.expiresAt || null }));
+          renderAutoBankPayment(o);
+          startAutoBankPolling(o.orderCode, udid);
+          btn.innerHTML = '<span>⏳ ĐANG CHỜ THANH TOÁN...</span>';
+        } catch (err) {
+          statusDiv.style.background = 'rgba(239, 68, 68, 0.08)';
+          statusDiv.style.border = '1px solid rgba(239, 68, 68, 0.25)';
+          statusDiv.style.color = '#b91c1c';
+          statusDiv.innerHTML = `<div style="font-weight:700;">❌ ${escapeAutoBankHtml(err.message)}</div>`;
+          resetAutoBankButtons();
+        }
+      }
+
+      function renderAutoBankPayment(order) {
+        const statusDiv = document.getElementById('mainActivateStatus');
+        if (!statusDiv) return;
+        const qrUrl = escapeAutoBankHtml(order.qrUrl || '');
+        const orderCode = escapeAutoBankHtml(order.orderCode || '');
+        const content = escapeAutoBankHtml(order.transferContent || '');
+        const account = escapeAutoBankHtml(order.accountNumber || '');
+        const holder = escapeAutoBankHtml(order.accountHolder || '');
+        const bank = escapeAutoBankHtml(order.bank || '');
+
+        statusDiv.innerHTML = `
+          <div style="text-align:center;">
+            <div style="font-size:15px; font-weight:800; color:#047857; margin-bottom:4px;">🏦 THANH TOÁN TỰ ĐỘNG</div>
+            <div style="font-size:11px; color:#64748b; margin-bottom:10px;">Quét đúng QR và giữ nguyên nội dung chuyển khoản</div>
+            <img src="${qrUrl}" alt="VietQR" style="width:min(290px,100%); border-radius:14px; background:#fff; border:1px solid #e2e8f0; display:block; margin:0 auto 12px;">
+          </div>
+          <div style="background:#fff; border:1px solid #dbeafe; border-radius:12px; padding:11px 12px; font-size:12px; line-height:1.75; color:#334155;">
+            <div><b>Ngân hàng:</b> ${bank}</div>
+            <div><b>Chủ TK:</b> ${holder}</div>
+            <div style="display:flex; justify-content:space-between; gap:8px; align-items:center;"><span><b>STK:</b> <code>${account}</code></span><button type="button" onclick="copyText('${account}')" style="border:1px solid #cbd5e1;background:#f8fafc;border-radius:7px;padding:3px 7px;cursor:pointer;">Copy</button></div>
+            <div><b>Gói:</b> <span style="color:#4f46e5;font-weight:800;">${escapeAutoBankHtml(order.planLabel || '')}</span></div>
+            <div><b>Số tiền:</b> <span style="color:#dc2626;font-weight:800;">${formatVnd(order.amount)}</span></div>
+            <div style="display:flex; justify-content:space-between; gap:8px; align-items:center;"><span><b>Nội dung:</b> <code style="font-weight:800;color:#4f46e5;">${content}</code></span><button type="button" onclick="copyText('${content}')" style="border:1px solid #cbd5e1;background:#f8fafc;border-radius:7px;padding:3px 7px;cursor:pointer;">Copy</button></div>
+            <div><b>Mã đơn:</b> <code>${orderCode}</code></div>
+            <div><b>Thời hạn:</b> <span id="autoBankCountdown" style="color:#dc2626;font-weight:800;">10:00</span></div>
+          </div>
+          <div id="autoBankLiveStatus" style="margin-top:10px; padding:10px; background:#ecfdf5; border:1px solid #a7f3d0; border-radius:10px; font-size:12px; color:#047857; font-weight:700; text-align:center;">⏳ Đang chờ SePay xác nhận giao dịch...</div>
+        `;
+        startAutoBankCountdown(order.expiresAt);
+      }
+
+      let autoBankCountdownTimer = null;
+      function startAutoBankCountdown(expiresAt) {
+        if (autoBankCountdownTimer) clearInterval(autoBankCountdownTimer);
+        const expiryMs = new Date(expiresAt || (Date.now() + 10 * 60 * 1000)).getTime();
+        const tick = () => {
+          const el = document.getElementById('autoBankCountdown');
+          if (!el) return;
+          const left = Math.max(0, expiryMs - Date.now());
+          const totalSec = Math.ceil(left / 1000);
+          const mm = String(Math.floor(totalSec / 60)).padStart(2, '0');
+          const ss = String(totalSec % 60).padStart(2, '0');
+          el.textContent = `${mm}:${ss}`;
+          if (left <= 0) {
+            clearInterval(autoBankCountdownTimer);
+            autoBankCountdownTimer = null;
+            el.textContent = 'HẾT HẠN';
+          }
+        };
+        tick();
+        autoBankCountdownTimer = setInterval(tick, 1000);
+      }
+
+      function startAutoBankPolling(orderCode, udid) {
+        let checks = 0;
+        const run = async () => {
+          checks++;
+          try {
+            const res = await fetch('/api/payment/status?order=' + encodeURIComponent(orderCode), { cache: 'no-store' });
+            const data = await res.json();
+            if (!res.ok || !data.success || !data.order) return;
+            const order = data.order;
+            const live = document.getElementById('autoBankLiveStatus');
+
+            if (order.status === 'pending') {
+              if (live) live.innerHTML = order.message ? `⚠️ ${escapeAutoBankHtml(order.message)}` : '⏳ Đang chờ SePay xác nhận giao dịch...';
+              return;
+            }
+            if (order.status === 'expired') {
+              if (autoBankPollTimer) clearInterval(autoBankPollTimer);
+              autoBankPollTimer = null;
+              if (autoBankCountdownTimer) clearInterval(autoBankCountdownTimer);
+              autoBankCountdownTimer = null;
+              localStorage.removeItem('vanthang_auto_bank_order');
+              resetAutoBankButtons();
+              if (live) {
+                live.style.background = '#fff7ed';
+                live.style.borderColor = '#fdba74';
+                live.style.color = '#9a3412';
+                live.innerHTML = '⌛ ĐƠN ĐÃ HẾT HẠN SAU 10 PHÚT. Vui lòng tạo đơn mới để thanh toán.';
+              }
+              const cd = document.getElementById('autoBankCountdown');
+              if (cd) cd.textContent = 'HẾT HẠN';
+              return;
+            }
+            if (order.status === 'paid_processing') {
+              if (live) live.innerHTML = '✅ ĐÃ NHẬN TIỀN — đang kích hoạt MuaCert...';
+              return;
+            }
+            if (order.status === 'activated' || order.status === 'paid') {
+              if (autoBankPollTimer) clearInterval(autoBankPollTimer);
+              autoBankPollTimer = null;
+              if (autoBankCountdownTimer) clearInterval(autoBankCountdownTimer);
+              autoBankCountdownTimer = null;
+              localStorage.removeItem('vanthang_auto_bank_order');
+              resetAutoBankButtons();
+              if (live) live.innerHTML = '🎉 THANH TOÁN & KÍCH HOẠT THÀNH CÔNG!';
+              try {
+                await autoLoadCertForPostPayChoices(udid, live);
+              } catch (e) {
+                if (live) live.innerHTML = `✅ Đã kích hoạt UDID. Chứng chỉ có thể đang được MuaCert xử lý; hãy sang tab Tra Cứu UDID sau ít phút.<br><span style="font-weight:500;">${escapeAutoBankHtml(e.message)}</span>`;
+              }
+              return;
+            }
+            if (order.status === 'activation_failed') {
+              if (autoBankPollTimer) clearInterval(autoBankPollTimer);
+              autoBankPollTimer = null;
+              if (autoBankCountdownTimer) clearInterval(autoBankCountdownTimer);
+              autoBankCountdownTimer = null;
+              resetAutoBankButtons();
+              if (live) {
+                live.style.background = '#fff7ed';
+                live.style.borderColor = '#fed7aa';
+                live.style.color = '#9a3412';
+                live.innerHTML = '⚠️ ' + escapeAutoBankHtml(order.message || 'Đã nhận tiền nhưng kích hoạt chưa thành công. Vui lòng liên hệ admin.');
+              }
+            }
+          } catch (_) {}
+
+          if (checks >= 180 && autoBankPollTimer) {
+            clearInterval(autoBankPollTimer);
+            autoBankPollTimer = null;
+            const live = document.getElementById('autoBankLiveStatus');
+            if (live) live.innerHTML = '⌛ Chưa nhận được xác nhận. Nếu bạn đã chuyển khoản, hãy giữ mã đơn và liên hệ admin để kiểm tra.';
+            resetAutoBankButtons();
+          }
+        };
+        run();
+        autoBankPollTimer = setInterval(run, 4000);
+      }
+
+      function injectUdidIntoMainCard() {
+        document.querySelectorAll('header img, header img[src*="avatar"]').forEach(img => {
+          if (img.dataset.vidReplaced) return;
+          img.dataset.vidReplaced = 'true';
+          const vid = document.createElement('video');
+          vid.src = '/vanthang.mp4';
+          vid.autoplay = true;
+          vid.loop = true;
+          vid.muted = true;
+          vid.playsInline = true;
+          vid.setAttribute('webkit-playsinline', 'true');
+          vid.style.cssText = 'width: 34px; height: 34px; border-radius: 12px; object-fit: cover; display: block; box-shadow: 0 2px 8px rgba(0,0,0,0.08); border: 1.5px solid #e2e8f0;';
+          img.replaceWith(vid);
+        });
+
+        const allInputs = document.querySelectorAll('main input');
+        allInputs.forEach(inp => {
+          if (inp.placeholder && inp.placeholder.includes('Mật khẩu P12')) {
+            const parent = inp.closest('div.mb-6') || inp.parentElement;
+            if (parent) parent.style.display = 'none';
+          }
+        });
+
+        const dropzone = document.querySelector('main div.border-dashed');
+        if (dropzone) {
+          dropzone.style.position = 'absolute';
+          dropzone.style.width = '1px';
+          dropzone.style.height = '1px';
+          dropzone.style.opacity = '0';
+          dropzone.style.pointerEvents = 'none';
+          dropzone.style.overflow = 'hidden';
+          dropzone.style.padding = '0';
+          dropzone.style.margin = '0';
+          dropzone.style.border = '0';
+        }
+
+        setInstallButtonVisibility(currentMainTab !== 'activate');
+
+        if (document.getElementById('mainUdidInput')) return;
+
+        if (dropzone && dropzone.parentElement) {
+          const wrapper = document.createElement('div');
+          wrapper.id = 'udidDirectSection';
+          wrapper.style.cssText = 'margin-top: 18px; margin-bottom: 20px; text-align: left;';
+          wrapper.innerHTML = `
+            <!-- BENTO BRAND CARD VANTHANG (LIGHT) -->
+            <div style="background: #ffffff; border: 1px solid #e2e8f0; border-radius: 22px; padding: 18px; margin-bottom: 18px; box-shadow: 0 4px 20px rgba(0, 0, 0, 0.04);">
+              <div style="background: linear-gradient(135deg, #f8fafc 0%, #eef2ff 100%); border: 1px solid #e0e7ff; border-radius: 18px; padding: 14px 16px; margin-bottom: 16px; display: flex; align-items: center; justify-content: space-between; gap: 12px;">
+                <div style="display: flex; align-items: center; gap: 12px;">
+                  <img src="/vanthang.gif" alt="vanthang" style="width: 46px; height: 46px; border-radius: 14px; object-fit: cover; box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08); border: 1.5px solid #ffffff; flex-shrink: 0; display: block;">
+                  <div>
+                    <div style="font-size: 15px; font-weight: 800; color: #0f172a; display: flex; align-items: center; gap: 6px;">
+                      <span>vanthang</span>
+                    </div>
+                    <div style="font-size: 11px; color: #64748b; margin-top: 2px;">Kích hoạt tự động tức thì • Cài đặt ESIGN</div>
+                  </div>
+                </div>
+                <a href="https://t.me/lethanhduyy" target="_blank" style="background: linear-gradient(135deg, #0284c7 0%, #0369a1 100%); color: #ffffff; font-size: 12px; font-weight: 700; padding: 8px 14px; border-radius: 12px; text-decoration: none; white-space: nowrap; box-shadow: 0 3px 10px rgba(2, 132, 199, 0.25); display: flex; align-items: center; gap: 5px;">
+                  <span>💬 Hỗ Trợ</span>
+                </a>
+              </div>
+
+              <!-- SEGMENTED TABS (LIGHT) -->
+              <div style="display: flex; gap: 6px; margin-bottom: 16px; background: #f1f5f9; padding: 5px; border-radius: 14px; border: 1px solid #e2e8f0;">
+                <button type="button" id="tabBtnActivate" onclick="switchMainTab('activate')" style="flex: 1; padding: 10px 8px; border-radius: 10px; border: none; font-size: 12px; font-weight: 700; cursor: pointer; background: #ffffff; color: #4f46e5; box-shadow: 0 3px 10px rgba(0, 0, 0, 0.08); transition: all 0.2s;">
+                  🏦 Mua Chứng Chỉ
+                </button>
+                <button type="button" id="tabBtnUdid" onclick="switchMainTab('udid')" style="flex: 1; padding: 10px 8px; border-radius: 10px; border: none; font-size: 12px; font-weight: 600; cursor: pointer; background: transparent; color: #64748b; transition: all 0.2s;">
+                  🔍 Tra Cứu UDID / Ký App
+                </button>
+              </div>
+
+              <!-- TAB 1: MUA CHỨNG CHỈ -->
+              <div id="tabContentActivate">
+                <!-- UDID INPUT -->
+                <div style="margin-bottom: 14px;">
+                  <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 7px;">
+                    <label style="font-size: 11px; font-weight: 700; color: #475569; text-transform: uppercase; letter-spacing: 0.03em; display: flex; align-items: center; gap: 5px;">
+                      <span>📱</span><span>MÃ UDID MÁY CỦA BẠN:</span>
+                    </label>
+                    <div style="display: flex; align-items: center; gap: 6px;">
+                      <a href="/udid.mobileconfig" style="background: rgba(79, 70, 229, 0.08); border: 1px solid rgba(79, 70, 229, 0.2); color: #4f46e5; font-size: 11px; font-weight: 700; padding: 4px 10px; border-radius: 8px; text-decoration: none; display: inline-flex; align-items: center; gap: 4px;">
+                        <span>📲 Lấy UDID Tự Động</span>
+                      </a>
+                      <button type="button" onclick="pasteToInput('mainUdidForCode')" style="background: #f1f5f9; border: 1px solid #cbd5e1; color: #475569; font-size: 11px; font-weight: 600; padding: 4px 9px; border-radius: 8px; cursor: pointer;">
+                        Dán
+                      </button>
+                    </div>
+                  </div>
+                  <input id="mainUdidForCode" type="text" placeholder="VD: 00008101-001614880183001E" style="width: 100%; box-sizing: border-box; background: #ffffff; color: #0f172a; border: 1px solid #cbd5e1; padding: 13px 15px; border-radius: 12px; font-size: 13px; font-family: var(--font-mono) !important; outline: none; transition: border-color 0.2s, box-shadow 0.2s;" onfocus="this.style.borderColor='#4f46e5'; this.style.boxShadow='0 0 0 3px rgba(79, 70, 229, 0.15)';" onblur="this.style.borderColor='#cbd5e1'; this.style.boxShadow='none';">
+                </div>
+
+                <div style="background:#f8fafc;border:1px solid #e2e8f0;border-radius:12px;padding:11px 12px;margin:4px 0 14px;font-size:11.5px;color:#475569;line-height:1.55;text-align:center;">
+                  Nhập UDID rồi thanh toán để hệ thống tự động kích hoạt chứng chỉ.
+                </div>
+                <div style="margin-bottom:10px; font-size:11px; font-weight:800; color:#475569; text-align:center;">CHỌN GÓI THANH TOÁN</div>
+                <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:10px;">
+                  <button type="button" id="planChoice10" onclick="selectAutoBankPlan('10d')" style="min-width:0; box-sizing:border-box; background:linear-gradient(135deg,#059669 0%,#10b981 100%); color:#fff; border:1px solid #059669; font-weight:800; padding:11px 6px; border-radius:12px; font-size:12px; cursor:pointer; line-height:1.35; box-shadow:0 4px 14px rgba(5,150,105,.22);">
+                    <div style="font-size:14px;">50.000Đ</div><div style="font-size:10.5px;font-weight:700;opacity:.95;">Bảo hành 10 ngày</div>
+                  </button>
+                  <button type="button" id="planChoice365" onclick="selectAutoBankPlan('365d')" style="min-width:0; box-sizing:border-box; background:#ffffff; color:#334155; border:1px solid #cbd5e1; font-weight:800; padding:11px 6px; border-radius:12px; font-size:12px; cursor:pointer; line-height:1.35;">
+                    <div style="font-size:14px;">150.000Đ</div><div style="font-size:10.5px;font-weight:700;opacity:.9;">Bảo hành 365 ngày</div>
+                  </button>
+                </div>
+                <button type="button" id="btnAutoBankPay" onclick="handleAutoBankPayment()" style="width:100%; box-sizing:border-box; background:linear-gradient(135deg,#059669 0%,#10b981 100%); color:#fff; font-weight:800; padding:15px 18px; border-radius:14px; border:none; font-size:14px; cursor:pointer; display:flex; align-items:center; justify-content:center; gap:8px; box-shadow:0 4px 18px rgba(5,150,105,.25);">
+                  <span>🏦 THANH TOÁN AUTO BANK — 50.000Đ</span>
+                </button>
+                <div style="font-size:10.5px; color:#64748b; margin-top:7px; text-align:center; line-height:1.5;">Chọn gói ngay phía trên → Quét VietQR → SePay xác nhận đúng số tiền → tự động kích hoạt MuaCert</div>
+
+                <div id="mainActivateStatus" style="display: none; margin-top: 14px; padding: 14px; border-radius: 14px; font-size: 13px; line-height: 1.5;"></div>
+              </div>
+
+              <!-- TAB 2: TRA CỨU UDID -->
+              <div id="tabContentUdid" style="display: none;">
+                <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 7px;">
+                  <label style="font-size: 11px; font-weight: 700; color: #475569; text-transform: uppercase;">MÃ UDID ĐÃ MUA TRƯỚC ĐÓ:</label>
+                  <button type="button" onclick="handleCheckMainUdidStatus()" style="background: transparent; color: #0284c7; border: none; font-size: 12px; font-weight: 700; cursor: pointer; text-decoration: underline;">Kiểm Tra Trạng Thái</button>
+                </div>
+                <input id="mainUdidInput" type="text" placeholder="Nhập mã UDID (ví dụ: 00008030-000C090A0120402E)" style="width: 100%; box-sizing: border-box; background: #ffffff; color: #0f172a; border: 1px solid #cbd5e1; padding: 13px 15px; border-radius: 12px; font-size: 13px; font-family: var(--font-mono) !important; outline: none;" oninput="handleUdidInputDebounce(this.value)">
+                <div id="mainUdidStatus" style="display: none; margin-top: 12px; padding: 14px; border-radius: 14px; background: #f8fafc; border: 1px solid #e2e8f0; font-size: 12px; color: #334155;"></div>
+              </div>
+            </div>
+          `;
+
+          dropzone.parentElement.insertBefore(wrapper, dropzone.nextSibling);
+
+          const urlParams = new URLSearchParams(window.location.search);
+          const autoUdid = urlParams.get('udid');
+          if (autoUdid) {
+            const input1 = document.getElementById('mainUdidForCode');
+            if (input1) input1.value = autoUdid;
+            const input2 = document.getElementById('mainUdidInput');
+            if (input2) input2.value = autoUdid;
+            const statusDiv = document.getElementById('mainActivateStatus');
+            if (statusDiv) {
+              statusDiv.style.display = 'block';
+              statusDiv.style.background = 'rgba(5, 150, 105, 0.08)';
+              statusDiv.style.border = '1px solid rgba(5, 150, 105, 0.25)';
+              statusDiv.style.color = '#065f46';
+              statusDiv.innerHTML = `✔ <b>Đã nhận diện thành công UDID:</b> <code style="font-family:var(--font-mono); background:#ffffff; border:1px solid #cbd5e1; padding:2px 8px; border-radius:6px; color:#059669;">${autoUdid}</code>`;
+            }
+          }
+        }
+
+        bindSignButtonClick();
+      }
+
+      let udidDebounceTimer = null;
+      function handleUdidInputDebounce(val) {
+        const clean = (val || '').trim();
+        if (udidDebounceTimer) clearTimeout(udidDebounceTimer);
+        if (clean.length >= 20) {
+          udidDebounceTimer = setTimeout(() => {
+            loadCertByUdidIntoReact(clean);
+          }, 600);
+        }
+      }
+
+      function bindSignButtonClick() {
+        if (window._hasBoundGlobalSignClick) return;
+        window._hasBoundGlobalSignClick = true;
+
+        document.addEventListener('click', async function(e) {
+          const target = e.target.closest('button');
+          if (!target) return;
+          if (target.id === 'btnActivateMain' || target.id === 'tabBtnActivate' || target.id === 'tabBtnUdid') return;
+
+          const text = (target.textContent || '').trim();
+          const isSignButton = text.startsWith('Cài Đặt') || text.includes('Ký') || (target.className && target.className.includes('py-4') && !target.id);
+          if (!isSignButton) return;
+
+          if (target.dataset.isAutoSigning === 'true') return;
+
+          // Lấy mã UDID
+          const udidInput = (currentMainTab === 'activate' ? document.getElementById('mainUdidForCode') : document.getElementById('mainUdidInput')) || document.getElementById('mainUdidInput') || document.getElementById('mainUdidForCode');
+          const udid = udidInput ? udidInput.value.trim() : '';
+
+          const hasLoadedFile = !!(document.querySelector('main div.bg-\\[\\#0a84ff\\]\\/10') || 
+                                   document.querySelector('main div.border-dashed')?.innerText?.includes('.zip') ||
+                                   Array.from(document.querySelectorAll('main span, main p')).some(el => el.textContent.includes('.zip')));
+
+          if (!hasLoadedFile) {
+            e.preventDefault();
+            e.stopPropagation();
+
+            if (!udid) {
+              alert('Vui lòng nhập mã UDID trước khi bấm Cài Đặt!');
+              if (udidInput) udidInput.focus();
+              return;
+            }
+
+            target.dataset.isAutoSigning = 'true';
+            const originalHtml = target.innerHTML;
+            target.innerHTML = '<span>⏳ Đang tải chứng chỉ & chuẩn bị ký...</span>';
+            target.disabled = true;
+
+            const statusDiv = (currentMainTab === 'activate' ? document.getElementById('mainActivateStatus') : document.getElementById('mainUdidStatus')) || document.getElementById('mainUdidStatus');
+            try {
+              await autoLoadCertAndSign(udid, statusDiv);
+            } catch (err) {
+              if (statusDiv) {
+                statusDiv.style.display = 'block';
+                statusDiv.style.background = 'rgba(239, 68, 68, 0.08)';
+                statusDiv.style.border = '1px solid rgba(239, 68, 68, 0.25)';
+                statusDiv.style.color = '#b91c1c';
+                statusDiv.innerHTML = `<div style="font-weight: 600;">❌ ${err.message}</div>`;
+              }
+            } finally {
+              target.disabled = false;
+              target.innerHTML = originalHtml;
+              setTimeout(() => {
+                delete target.dataset.isAutoSigning;
+              }, 2500);
+            }
+          }
+        }, true);
+      }
+
+      async function handleCheckMainUdidStatus() {
+        const udidInput = document.getElementById('mainUdidInput');
+        const udid = udidInput ? udidInput.value.trim() : '';
+        const statusDiv = document.getElementById('mainUdidStatus');
+        if (!udid) {
+          alert('Vui lòng nhập mã UDID!');
+          return;
+        }
+
+        statusDiv.style.display = 'block';
+        statusDiv.innerHTML = `
+          <div style="display: flex; align-items: center; gap: 8px; color: #0284c7;">
+            <span style="display: inline-block; width: 14px; height: 14px; border: 2px solid #0284c7; border-top-color: transparent; border-radius: 50%; animation: spin 0.8s linear infinite;"></span>
+            <span>Đang tra cứu UDID trên máy chủ store cheat ios...</span>
+          </div>
+        `;
+
+        try {
+          const res = await fetch(`/api/cert-status/${encodeURIComponent(udid)}`);
+          const data = await res.json();
+          if (res.ok && data.code === 0 && data.data) {
+            const info = data.data;
+            const statusUpper = (info.status || 'ACTIVE').toUpperCase();
+            const isProcessing = statusUpper === 'PROCESSING';
+            const isRevoked = statusUpper.includes('REVOKED') || statusUpper.includes('BANNED');
+
+            let badge = '';
+            if (isRevoked) {
+              badge = `<span style="background: rgba(239, 68, 68, 0.1); border: 1px solid rgba(239, 68, 68, 0.3); color: #b91c1c; font-weight: 700; padding: 3px 8px; border-radius: 6px;">🔴 ĐÃ BỊ THU HỒI (${statusUpper})</span>`;
+            } else if (isProcessing) {
+              badge = `<span style="background: rgba(234, 179, 8, 0.12); border: 1px solid rgba(234, 179, 8, 0.35); color: #b45309; font-weight: 700; padding: 3px 8px; border-radius: 6px;">🟡 ĐANG XỬ LÝ (${statusUpper})</span>`;
+            } else {
+              badge = `<span style="background: rgba(5, 150, 105, 0.1); border: 1px solid rgba(5, 150, 105, 0.3); color: #047857; font-weight: 700; padding: 3px 8px; border-radius: 6px;">🟢 CÒN HOẠT ĐỘNG (${statusUpper})</span>`;
+            }
+
+            statusDiv.innerHTML = `
+              <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px; border-bottom: 1px solid #e2e8f0; padding-bottom: 8px;">
+                <span><b>Trạng thái:</b></span>
+                ${badge}
+              </div>
+              <div style="margin-bottom: 10px; color: #334155;"><b>📱 Dòng máy:</b> ${info.model || 'iPhone'}</div>
+              ${isProcessing ? `
+                <div style="background: #fefce8; border: 1px solid #fef08a; border-radius: 12px; padding: 12px; margin-top: 8px; font-size: 12px; color: #854d0e; line-height: 1.5;">
+                  ⏳ <b>Thiết bị đã được kích hoạt thành công trên hệ thống!</b><br>
+                  Hệ thống MuaCert đang tiến hành tạo file chứng chỉ (thường mất từ vài phút đến ít giờ). Vui lòng quay lại kiểm tra sau ít phút để nạp chứng chỉ hoặc tải file zip!
+                </div>
+              ` : `
+                <button type="button" onclick="handleDownloadZipNoUrl()" style="width: 100%; box-sizing: border-box; background: #ffffff; border: 1px solid #cbd5e1; color: #0f172a; font-weight: 600; padding: 11px 14px; border-radius: 12px; font-size: 13px; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 8px; margin-top: 6px; box-shadow: 0 2px 6px rgba(0,0,0,0.04);">
+                  📥 Tải File Chứng Chỉ (.zip)
+                </button>
+                <div style="font-size: 11px; color: #64748b; text-align: center; margin-top: 8px;">Mật khẩu P12 mặc định: <b style="color: #4f46e5;">1</b></div>
+              `}
+            `;
+
+            if (!isProcessing && !isRevoked) {
+              loadCertByUdidIntoReact(udid);
+            }
+          } else {
+            statusDiv.innerHTML = `<div style="color: #b91c1c; font-weight: 600;">❌ ${data.message || data.error || 'Không tìm thấy chứng chỉ cho UDID này'}</div>`;
+          }
+        } catch (err) {
+          statusDiv.innerHTML = `<div style="color: #b91c1c; font-weight: 600;">❌ Lỗi: ${err.message}</div>`;
+        }
+      }
+
+      const observer = new MutationObserver(() => {
+        injectUdidIntoMainCard();
+      });
+      observer.observe(document.body, { childList: true, subtree: true });
+    
+      async function handleTelegramInstallQuery() {
+        try {
+          const params = new URLSearchParams(window.location.search);
+          const udid = (params.get('udid') || '').trim();
+          const appId = (params.get('tgapp') || '').trim().toLowerCase();
+          if (!udid || !['esign','ksign','esign2'].includes(appId)) return;
+
+          // Chờ giao diện React và các helper sẵn sàng rồi tự nạp chứng chỉ.
+          await new Promise(resolve => setTimeout(resolve, 900));
+          const status = document.getElementById('autoBankLiveStatus') || document.getElementById('mainUdidStatus');
+          await autoLoadCertForPostPayChoices(udid, status);
+          await new Promise(resolve => setTimeout(resolve, 400));
+          await signPostPayApp(appId);
+        } catch (err) {
+          console.error('Telegram install query error:', err);
+        }
+      }
+
+      function cleanupLegacyKeyText() {
+        const replacements = [
+          ['Bán Key & Kích Hoạt Chứng Chỉ iOS', 'Kích Hoạt Chứng Chỉ iOS'],
+          ['Bán Key & Kích Hoạt Chứng Chỉ iOS Uy Tín - Hỗ Trợ ESIGN', 'Kích Hoạt Chứng Chỉ iOS Tự Động - Hỗ Trợ ESign & KSign']
+        ];
+        const walker = document.createTreeWalker(document.body, NodeFilter.SHOW_TEXT);
+        const nodes = [];
+        while (walker.nextNode()) nodes.push(walker.currentNode);
+        nodes.forEach(node => {
+          let text = node.nodeValue || '';
+          for (const [from, to] of replacements) text = text.replace(from, to);
+          node.nodeValue = text;
+        });
+      }
+      window.addEventListener('load', () => {
+        cleanupLegacyKeyText();
+        setTimeout(cleanupLegacyKeyText, 700);
+        setTimeout(handleTelegramInstallQuery, 1100);
+      });
+</script>
+  </body>
+</html>
